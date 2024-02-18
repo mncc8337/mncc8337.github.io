@@ -55,7 +55,7 @@ body {
     background: #ccc;
 }
 
-/*@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     .topnav .search-container {
         float: none;
     }
@@ -70,7 +70,7 @@ body {
     .topnav input[type=text] {
         border: 1px solid #ccc;  
     }
-}*/
+} */
 .icon:hover,.shk_img:hover {
     animation: shake 0.3s;
     animation-iteration-count: infinite;
@@ -147,10 +147,10 @@ td, th {
     background-size: 400% 100%;
 }
 .rainbowbg {
-    background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
-/*    -webkit-background-clip: text;
+    /* background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+    -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;*/
+    color: transparent; */
     animation: rainbow_animation 6s ease-in-out infinite;
     background-size: 400% 100%;
 }
