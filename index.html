@@ -1,27 +1,23 @@
 <html ontouchstart=stt(event) ontouchmove=mov(event) ontouchend=check() >
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="image/Icon.ico" />
-    <title>HTML Snake - MNCC</title>
-    <link rel="stylesheet" href="../main.css" />
-    <script type="text/javascript" src="../main.js"></script>
-    <script src="https://kit.fontawesome.com/c1e3b519d8.js" crossorigin="anonymous"></script>
-    <div class="topnav">
-    <a title="Home" href="../"><i class="fa fa-fw fa-home icon"></i>Home</a>
-    <!-- <a title="Download" href="download.html"><i class="fa fa-download"></i> Download</a> -->
-    <a title="Snake" class="active" href="/"><i class="fa fa-gamepad" aria-hidden="true"></i> Snake</a>
-    <a title="Animated" href="../animated"><i class="fa fa-arrow-alt-circle-right"></i> Animated page</a>
-    <div class="search-container">
-        <button type="submit" onclick="serch()"><i class="fas fa-angle-right"></i> I'm feeling lucky</button>
-    </div>
-    </div>
-    </head>
-<p style="color: #d40e00;font-family: OCR A Std;float:center" align="center">Use the arrow key to play or swipe on the screen (if you have a touch screen)</p>
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="image/Icon.ico" /> -->
+    <title>snek</title>
 
+    <!-- <link rel="stylesheet" href="../main.css" />
+    <script type="text/javascript" src="../main.js"></script> -->
+    <script src="https://kit.fontawesome.com/c1e3b519d8.js" crossorigin="anonymous"></script>
+    <a title="Home" href="../"><i class="fa fa-fw fa-home icon"></i>Home</a>
+    <!-- <a title="Snake" class="active" href="/"><i class="fa fa-gamepad" aria-hidden="true"></i> Snake</a>
+    <a title="Animated" href="../animated"><i class="fa fa-arrow-alt-circle-right"></i> Animated page</a> -->
+    <p style="color: #d40e00;font-family: OCR A Std;float:center" align="center">
+        Use the arrow key to play or swipe on the screen (if you have a touch screen)
+    </p>
+</head>
 
 <body align="center" >
-  <div style="display: inline-flex; float: center">
-  <div class="slidecontainer" style="float: center; margin: 10px;">
-        <p style="color: #d40e00; font-family: OCR A Std; float: left" align="left" >Change speed here</p>
+    <div style="display: inline-flex; float: center">
+        <div class="slidecontainer" style="float: center; margin: 10px;">
+            <p style="color: #d40e00; font-family: OCR A Std; float: left" align="left" >Change speed here</p>
         <input type="range" min="1" max="15" value="4" class="slider" id="myRange" width="60" style="transform: scaleX(-1)" align="left">
         <br>
         <label style="color: #d40e00; font-family: OCR A Std; float: left">Speed: </label>
@@ -34,50 +30,43 @@
     </div>
 </body>
 
-
-
-
-    <style>
-
-    body {
-        background: black;
-        /* align-items: center;
-        justify-content: center; */
-    }
-    canvas {
-        border: 1px solid white;
-        float:top;
-    }
-    .slider {
-        height: 15px;
-        border-radius: 5px; 
-        background: #d3d3d3;
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-        padding-left: 10px;
-    }
-
-    .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%; 
-        background: red;
-        cursor: pointer;
-    }
-
-    .slider::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: red;
-        cursor: pointer;
-    }
+<style>
+body {
+    background: black;
+    /* align-items: center;
+    justify-content: center; */
+}
+canvas {
+    border: 1px solid white;
+    float:top;
+}
+.slider {
+    height: 15px;
+    border-radius: 5px; 
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    padding-left: 10px;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: red;
+    cursor: pointer;
+}
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: red;
+    cursor: pointer;
+}
 </style>
-</head>
 
 <script>
 function noScroll() {
@@ -321,4 +310,5 @@ document.addEventListener('keydown', function(e) {
 // start the game
 requestAnimationFrame(loop);
 </script>
+
 </html>
