@@ -1,84 +1,82 @@
-<html ontouchstart=stt(event) ontouchmove=mov(event) ontouchend=check() >
+<html ontouchstart=stt(event) ontouchmove=mov(event) ontouchend=check()>
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="image/Icon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="image/Icon.ico"/>
     <title>HTML Snake - MNCC</title>
     <link rel="stylesheet" href="../main.css" />
     <script type="text/javascript" src="../main.js"></script>
     <script src="https://kit.fontawesome.com/c1e3b519d8.js" crossorigin="anonymous"></script>
     <div class="topnav">
-    <a title="Home" href="../"><i class="fa fa-fw fa-home icon"></i>Home</a>
-    <!-- <a title="Download" href="download.html"><i class="fa fa-download"></i> Download</a> -->
-    <a title="Snake" class="active" href="/"><i class="fa fa-gamepad" aria-hidden="true"></i> Snake</a>
-    <a title="Animated" href="../animated"><i class="fa fa-arrow-alt-circle-right"></i> Animated page</a>
-    <div class="search-container">
-        <button type="submit" onclick="serch()"><i class="fas fa-angle-right"></i> I'm feeling lucky</button>
+        <a title="Home" href="../"><i class="fa fa-fw fa-home icon"></i>Home</a>
+        <!-- <a title="Download" href="download.html"><i class="fa fa-download"></i> Download</a> -->
+        <a title="Snake" class="active" href="/"><i class="fa fa-gamepad" aria-hidden="true"></i> Snake</a>
+        <a title="Animated" href="../animated"><i class="fa fa-arrow-alt-circle-right"></i> Animated page</a>
+        <div class="search-container">
+            <button type="submit" onclick="serch()"><i class="fas fa-angle-right"></i> I'm feeling lucky</button>
+        </div>
     </div>
-    </div>
-    </head>
-<p style="color: #d40e00;font-family: OCR A Std;float:center" align="center">Use the arrow key to play or swipe on the screen (if you have a touch screen)</p>
-
+</head>
+<p style="color: #d40e00;font-family: OCR A Std;float:center" align="center">
+    Use the arrow key to play or swipe on the screen (if you have a touch screen)
+</p>
+</head>
 
 <body align="center" >
-  <div style="display: inline-flex;float:center">
-  <div class="slidecontainer" style="float:center;margin: 10px;">
-        <p style="color: #d40e00;font-family: OCR A Std; float:;left" align="left" >Change speed here</p>
-        <input type="range" min="1" max="15" value="4" class="slider" id="myRange" width="60" style="transform: scaleX(-1);" align="left">
+  <div style="display: inline-flex;float: center">
+  <div class="slidecontainer" style="float: center; margin: 10px;">
+        <p style="color: #d40e00;font-family: OCR A Std; float: left" align="left" >Change speed here</p>
+        <input type="range" min="1" max="15" value="4" class="slider" id="myRange" width="60" style="transform: scaleX(-1)" align="left">
         <br>
-        <label style="color: #d40e00;font-family: OCR A Std; float:;left">Speed: </label>
-        <label style="color: #d40e00;font-family: OCR A Std; float:;left" id="spd" ></label>
+        <label style="color: #d40e00; font-family: OCR A Std; float: left">Speed: </label>
+        <label style="color: #d40e00; font-family: OCR A Std; float: left" id="spd"></label>
     </div>
       <p align="center" style="float:center">
-          <canvas id="game" width="400" height="400" ></canvas><br>
+          <canvas id="game" width="400" height="400"></canvas><br>
           <canvas id="panel" width="400" height="30"></canvas>
       </p>
     </div>
 </body>
 
-
-
-
-    <style>
-
+<style>
     body {
-    background: black;
-/*    align-items: center;
-    justify-content: center;*/
+        background: black;
+        /* align-items: center;
+        justify-content: center; */
     }
     canvas {
-    border: 1px solid white;
-    float:top;
+        border: 1px solid white;
+        float:top;
     }
     .slider {
-    -webkit-appearance: none;
-    height: 15px;
-    border-radius: 5px; 
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    padding-left: : 10px;
+        height: 15px;
+        border-radius: 5px; 
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        padding-left: 10px;
     }
 
     .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%; 
-    background: red;
-    cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%; 
+        background: red;
+        cursor: pointer;
     }
 
     .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: red;
-    cursor: pointer;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: red;
+        cursor: pointer;
     }
 </style>
-</head>
+
+<!-- idk where i stole this -->
 <script>
 function noScroll() {
     window.scrollTo(0, 0);
@@ -89,10 +87,12 @@ window.addEventListener('scroll', noScroll);
 
 // Remove listener to re-enable scroll
 window.removeEventListener('scroll', noScroll);
-    var x1=0
-    var x2=0
-    var y1=0
-    var y2=0
+
+var x1 = 0;
+var x2 = 0;
+var y1 = 0;
+var y2 = 0;
+
 function mov(event) {
     x2 = event.touches[0].clientX;
     y2 = event.touches[0].clientY;
@@ -103,32 +103,25 @@ function stt(event) {
     y1 = event.touches[0].clientY;
     document.getElementById("demo2").innerHTML = x1 + ", " + y1;
 }
-function check()
-{
-    if (x1>x2) 
-    {
-        if (y1<y2) 
-        {
-        if ((x1-x2)>(y2-y1)) {leftbutton()}
-        else {downbutton()}
+function check() {
+    if(x1 > x2)  {
+        if(y1 < y2) {
+            if(x1 - x2 > y2 - y1) leftbutton();
+            else downbutton();
         }
-        else
-        {
-        if ((x1-x2)>(y1-y2)) {leftbutton()}
-        else {upbutton()}
+        else {
+            if(x1 - x2 > y1 - y2) leftbutton();
+            else upbutton();
         }
     }
-    else 
-    {
-        if (y1<y2) 
-        {
-        if ((x2-x1)>(y2-y1)) {rightbutton()}
-        else {downbutton()}
+    else {
+        if(y1 < y2) {
+            if(x2 - x1 > y2 - y1) rightbutton();
+            else downbutton();
         }
-        else
-        {
-        if ((x2-x1)>(y1-y2)) {rightbutton()}
-        else {upbutton()}
+        else {
+            if(x2 - x1 > y1 - y2) rightbutton();
+            else upbutton();
         }
     }
 }
@@ -136,54 +129,48 @@ var slider = document.getElementById("myRange");
 var fps = 15
 var output = document.getElementById("spd");
 fps = slider.value; // Display the default slider value
-output.innerHTML = Math.abs(fps-16);
+output.innerHTML = Math.abs(fps - 16);
 
 slider.oninput = function() {
     fps = this.value;
-    output.innerHTML = Math.abs(fps-16);
+    output.innerHTML = Math.abs(fps - 16);
     ctx.clearRect(0, 0, cv.width, cv.height)
-        ctx.fillText("Score: "+scr,10, 23);
-        ctx.fillText("Speed: "+Math.abs(fps-16),230, 23);
-
+    ctx.fillText("Score: "+scr, 10, 23);
+    ctx.fillText("Speed: "+Math.abs(fps - 16), 230, 23);
 }
-function upbutton() 
-    {
-    if (snake.dy === 0) {
+function upbutton() {
+    if(snake.dy === 0) {
         snake.dy = -grid;
         snake.dx = 0;
-    }
-    
-    }
-    function downbutton() 
-    {
-    if (snake.dy === 0) {
+    }    
+}
+function downbutton() {
+    if(snake.dy === 0) {
         snake.dy = grid;
         snake.dx = 0;
     }
-    }
-    function leftbutton() 
-    {
+}
+function leftbutton() {
     if (snake.dx === 0) {
         snake.dx = -grid;
         snake.dy = 0;
     }
-    }
-    function rightbutton() 
-    {
+}
+function rightbutton() {
     if (snake.dx === 0) {
         snake.dx = grid;
         snake.dy = 0;
     }
-    }
+}
 
 var cv = document.getElementById("panel");
 var ctx = cv.getContext("2d");
 ctx.font = "25px OCR A Std";
 ctx.fillStyle = "red";
-ctx.fillText("Score: 0",10, 23);
-ctx.fillText("Speed: "+Math.abs(fps-16),230, 23);
-var eat = new Audio('snd/eat.mp3');
-var died= new Audio('snd/died.mp3');
+ctx.fillText("Score: 0", 10, 23);
+ctx.fillText("Speed: " + Math.abs(fps - 16), 230, 23);
+var eat  = new Audio('snd/eat.mp3');
+var died = new Audio('snd/died.mp3');
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 
@@ -211,7 +198,7 @@ var apple = {
 
 // get random whole numbers in a specific range
 // @see https://stackoverflow.com/a/1527820/2124254
-var scr=snake.maxCells-4;
+var scr = snake.maxCells - 4;
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -221,42 +208,33 @@ function loop() {
     requestAnimationFrame(loop);
 
     // slow game loop to 15 fps instead of 60 (60/15 = 4)
-    
-    if (++count < fps) {
-    return;
-    }
+    if (++count < fps) return;
 
     count = 0;
-    context.clearRect(0,0,canvas.width,canvas.height);
-
+    context.clearRect(0, 0, canvas.width,canvas.height);
 
     // move snake by it's velocity
     snake.x += snake.dx;
     snake.y += snake.dy;
 
     // wrap snake position horizontally on edge of screen
-    if (snake.x < 0) {
-    snake.x = canvas.width - grid;
-    }
-    else if (snake.x >= canvas.width) {
-    snake.x = 0;
-    }
+    if(snake.x < 0)
+        snake.x = canvas.width - grid;
+    else if(snake.x >= canvas.width)
+        snake.x = 0;
     
     // wrap snake position vertically on edge of screen
-    if (snake.y < 0) {
-    snake.y = canvas.height - grid;
-    }
-    else if (snake.y >= canvas.height) {
-    snake.y = 0;
-    }
+    if(snake.y < 0)
+        snake.y = canvas.height - grid;
+    else if(snake.y >= canvas.height)
+        snake.y = 0;
 
     // keep track of where snake has been. front of the array is always the head
     snake.cells.unshift({x: snake.x, y: snake.y});
 
     // remove cells as we move away from them
-    if (snake.cells.length > snake.maxCells) {
-    snake.cells.pop();
-    }
+    if(snake.cells.length > snake.maxCells)
+        snake.cells.pop();
 
     // draw apple
     context.fillStyle = 'red';
@@ -265,47 +243,45 @@ function loop() {
     // draw snake one cell at a time
     context.fillStyle = 'green';
     snake.cells.forEach(function(cell, index) {
-    
-    // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
-    context.fillRect(cell.x, cell.y, grid-1, grid-1); 
+        // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
+        context.fillRect(cell.x, cell.y, grid - 1, grid - 1); 
 
-    // snake ate apple
-    if (cell.x === apple.x && cell.y === apple.y) {
-        eat.play();
-        snake.maxCells++;
-        //score = snake.maxCells - 4 + Math.abs(fps-16)
-        scr=scr+Math.abs(fps-16);
-        ctx.clearRect(0, 0, cv.width, cv.height)
-        ctx.fillText("Score: "+scr,10, 23);
-        ctx.fillText("Speed: "+Math.abs(fps-16),230, 23);
+        // snake ate apple
+        if(cell.x === apple.x && cell.y === apple.y) {
+            eat.play();
+            snake.maxCells++;
+            //score = snake.maxCells - 4 + Math.abs(fps-16)
+            scr = scr + Math.abs(fps - 16);
+            ctx.clearRect(0, 0, cv.width, cv.height)
+            ctx.fillText("Score: " + scr, 10, 23);
+            ctx.fillText("Speed: " + Math.abs(fps - 16), 230, 23);
 
-        // canvas is 400x400 which is 25x25 grids 
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
-    }
-
-    // check collision with all cells after this one (modified bubble sort)
-    for (var i = index + 1; i < snake.cells.length; i++) {
-        
-        // snake occupies same space as a body part. reset game
-        if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-        died.play();
-        alert("Ur score: "+scr)
-        snake.x = 160;
-        snake.y = 160;
-        snake.cells = [];
-        snake.maxCells = 4;
-        scr=0;
-        snake.dx = grid;
-        snake.dy = 0;
-        ctx.clearRect(0, 0, cv.width, cv.height)
-        ctx.fillText("Score: "+scr,10, 23);
-        ctx.fillText("Speed: "+Math.abs(fps-16),230, 23);
-
-        apple.x = getRandomInt(0, 25) * grid;
-        apple.y = getRandomInt(0, 25) * grid;
+            // canvas is 400x400 which is 25x25 grids 
+            apple.x = getRandomInt(0, 25) * grid;
+            apple.y = getRandomInt(0, 25) * grid;
         }
-    }
+
+        // check collision with all cells after this one (modified bubble sort)
+        for(var i = index + 1; i < snake.cells.length; i++) {
+            // snake occupies same space as a body part. reset game
+            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+                died.play();
+                alert("Ur score: " + scr)
+                snake.x = 160;
+                snake.y = 160;
+                snake.cells = [];
+                snake.maxCells = 4;
+                scr = 0;
+                snake.dx = grid;
+                snake.dy = 0;
+                ctx.clearRect(0, 0, cv.width, cv.height)
+                ctx.fillText("Score: " + scr, 10, 23);
+                ctx.fillText("Speed: " + Math.abs(fps - 16), 230, 23);
+
+                apple.x = getRandomInt(0, 25) * grid;
+                apple.y = getRandomInt(0, 25) * grid;
+            }
+        }
     });
 }
 
@@ -317,24 +293,24 @@ document.addEventListener('keydown', function(e) {
     // shouldn't let you collide with your own body)
     
     // left arrow key
-if ((e.which === 37|| e.which === 65) && snake.dx === 0 ) {
-    snake.dx = -grid;
-    snake.dy = 0;
+    if((e.which === 37 || e.which === 65) && snake.dx === 0) {
+        snake.dx = -grid;
+        snake.dy = 0;
     }
     // up arrow key
-    else if ((e.which === 38|| e.which === 87) && snake.dy === 0    ) {
-    snake.dy = -grid;
-    snake.dx = 0;
+    else if((e.which === 38 || e.which === 87) && snake.dy === 0) {
+        snake.dy = -grid;
+        snake.dx = 0;
     }
     // right arrow key
-    else if ((e.which === 39|| e.which === 68) && snake.dx === 0    ) {
-    snake.dx = grid;
-    snake.dy = 0;
+    else if((e.which === 39 || e.which === 68) && snake.dx === 0) {
+        snake.dx = grid;
+        snake.dy = 0;
     }
     // down arrow key
-    else if ((e.which === 40|| e.which === 83) && snake.dy === 0    ) {
-    snake.dy = grid;
-    snake.dx = 0;
+    else if((e.which === 40 || e.which === 83) && snake.dy === 0) {
+        snake.dy = grid;
+        snake.dx = 0;
     }
 });
 
