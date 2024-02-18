@@ -1,0 +1,96 @@
+
+	<head>
+		<link rel="shortcut icon" type="image/x-icon" href="image/Icon.ico" />
+		<title>mAGiC - MNCC</title>
+		<link rel="stylesheet" href="../main.css" />
+		<script type="text/javascript" src="../main.js"></script>
+		<script src="https://kit.fontawesome.com/c1e3b519d8.js" crossorigin="anonymous"></script>
+	</head>
+	<div class="topnav">
+		<a title="Home" href="../"><i class="fa fa-fw fa-home icon"></i>Home</a>
+		<!-- <a title="Download" href="download.html"><i class="fa fa-download"></i> Download</a> -->
+		<a title="Snake" href="../snake"><i class="fa fa-gamepad" aria-hidden="true"> </i>Snake</a>
+		<a title="Animated" href="../animated"><i class="fas fa-arrow-alt-circle-right"></i>  Animated page</a>
+		<a class="rainbowbg" title="mAGic" ><i class="fas fa-atom"></i> mAGic</a>
+		<div class="search-container">
+			<button type="submit" onclick="serch()"><i class="fas fa-angle-right"></i> I'm feeling lucky</button>
+		</div>
+	</div>
+<body>
+	<button onclick="run();" style="font-size: 30px">Click me to speed up!</button>
+	<img id="dvd" src="dvd\dvd1.png" alt="Image" style="display: none;">
+
+
+	<canvas width="150" height="57" ></canvas>
+	<canvas id="scrn" width="1300" height="550" style="background-color: black;border:20px solid tomato"></canvas>
+
+
+	<script>
+		var color=2
+		var min_mov_x=1;
+		var min_mov_y=1;
+		var x=1;
+		var y=1;
+		var canvas = document.getElementById("scrn");
+		var ctx = canvas.getContext("2d");
+		var img = document.getElementById("dvd");
+		window.onload = function() {
+		ctx.drawImage(img, x,y);}
+		function rundvd()
+		{
+			requestAnimationFrame(rundvd);
+			function changeColor()
+			{
+				if (color==1) 
+					{
+						document.getElementById("dvd").src="dvd/dvd1.png";
+						color=2
+					}
+				else if (color==2) 
+					{
+						document.getElementById("dvd").src="dvd/dvd2.png";
+						color=3
+					}
+				else if (color==3) 
+					{
+						document.getElementById("dvd").src="dvd/dvd3.png";
+						color=4
+					}
+				else if (color==4) 
+					{
+						document.getElementById("dvd").src="dvd/dvd4.png";
+						color=5
+					}
+				else if (color==5) 
+					{
+						document.getElementById("dvd").src="dvd/dvd5.png";
+						color=6
+					}
+				else if (color==6) 
+					{
+						document.getElementById("dvd").src="dvd/dvd6.png";
+						color=1
+					}
+			}
+			if (x<Math.abs(min_mov_x) || x+113>canvas.width)
+			{
+				min_mov_x= -min_mov_x
+				changeColor()
+			}
+			if (y<Math.abs(min_mov_y) || y+57>canvas.height)
+			{
+				min_mov_y= -min_mov_y
+				changeColor()
+			}
+			x=x+min_mov_x
+			y=y+min_mov_y
+			ctx.clearRect(0, 0, canvas.width, canvas.height)
+			ctx.drawImage(img, x,y);
+		}
+		function run()
+		{
+			requestAnimationFrame(rundvd);
+		}
+		requestAnimationFrame(rundvd);
+	</script>
+</body>
