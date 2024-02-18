@@ -10,7 +10,7 @@
     <!-- <a title="Snake" class="active" href="/"><i class="fa fa-gamepad" aria-hidden="true"></i> Snake</a>
     <a title="Animated" href="../animated"><i class="fa fa-arrow-alt-circle-right"></i> Animated page</a> -->
     <p style="color: #d40e00;font-family: OCR A Std;float:center" align="center">
-        Use the arrow key to play or swipe on the screen (if you have a touch screen)
+        Use the arrow keys / WASD to play or swipe on the screen
     </p>
 </head>
 
@@ -68,6 +68,7 @@ canvas {
 }
 </style>
 
+<!-- its been 3 yrs idk where i stole this -->
 <script>
 function noScroll() {
     window.scrollTo(0, 0);
@@ -78,6 +79,7 @@ window.addEventListener('scroll', noScroll);
 
 // Remove listener to re-enable scroll
 window.removeEventListener('scroll', noScroll);
+
 var x1 = 0;
 var x2 = 0;
 var y1 = 0;
@@ -285,23 +287,23 @@ document.addEventListener('keydown', function(e) {
     // left won't do anything, and pressing right while moving left
     // shouldn't let you collide with your own body)
     
-    // left arrow key
-    if((e.which === 37 || e.which === 65) && snake.dx === 0 ) {
+    // left
+    if((e.which === 37 || e.which === 65) && snake.dx === 0) {
         snake.dx = -grid;
         snake.dy = 0;
     }
-    // up arrow key
-    else if((e.which === 38 || e.which === 87) && snake.dy === 0    ) {
+    // up
+    else if((e.which === 38 || e.which === 87) && snake.dy === 0) {
         snake.dy = -grid;
         snake.dx = 0;
     }
-    // right arrow key
-    else if((e.which === 39 || e.which === 68) && snake.dx === 0    ) {
+    // right
+    else if((e.which === 39 || e.which === 68) && snake.dx === 0) {
         snake.dx = grid;
         snake.dy = 0;
     }
-    // down arrow key
-    else if((e.which === 40 || e.which === 83) && snake.dy === 0    ) {
+    // down
+    else if((e.which === 40 || e.which === 83) && snake.dy === 0) {
         snake.dy = grid;
         snake.dx = 0;
     }
