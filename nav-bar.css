@@ -1,0 +1,23 @@
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3c3836;
+}
+
+.nav-entry {
+    float: left;
+}
+
+.nav-entry a {
+    display: block;
+    color: #ebdbb2;
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+
+.nav-entry a:hover {
+    color: #fe8019;
+}
