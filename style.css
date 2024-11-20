@@ -2,10 +2,9 @@ body {
     background-color: #282828;
     color: #fbf1c7;
     margin: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    line-height: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 hr {
@@ -16,10 +15,21 @@ a {
     color: #fe8019;
 }
 
+td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header {
+}
+
+.body {
+    margin-left: 20px;
+    margin-right: 20px;
+    flex: 1;
+}
+
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
     text-align: center;
     font-size: 12px;
