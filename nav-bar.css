@@ -6,8 +6,11 @@
     background-color: #3c3836;
 }
 
-.nav-entry {
+.nav-entry-left {
     float: left;
+}
+.nav-entry-right {
+    float: right;
 }
 
 .nav-entry a {
