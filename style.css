@@ -1,21 +1,15 @@
 body {
-    background-color: #282828;
-    color: #fbf1c7;
+    background-color: #b69cff;
+    color: #2f2d36;
     margin: 0;
+    min-height: 100vh;
+
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 hr {
-    border-color: #665c54;
-}
-
-a {
-    color: #fe8019;
-}
-a:hover {
-    color: #fb4934;
+    border-color: #a0a0a0;
 }
 
 td {
@@ -25,61 +19,23 @@ td {
 
 button {
     border-radius: 2px;
-    border-style: outset;
-    color: #fbf1c7;
-    background: #504945;
-    border-color: #665c64;
-}
-button:hover {
-    background: #665c54;
-}
-button:active {
-    background: #3c3836;
+    border-style: solid;
+    border-width: 2px;
 }
 
 /*.header {*/
 /*}*/
 
 .body {
-    margin-left: 20px;
-    margin-right: 20px;
-    flex: 1;
-    position: relative;
-}
-
-.content {
-    display: block;
+    flex-grow: 1;
+    background-color: #efebff;
     margin-left: auto;
     margin-right: auto;
-    max-width: 900px;
-}
-
-
-.side-panel-container {
-    position: absolute;
-    width: 100%;
-}
-/* hide side panels when they overlap the content box */
-@media screen and (max-width: 1540px) {
-    .side-panel-container {
-        display: none;
-    }
-}
-
-.side-panel {
-    width: 20%;
-}
-.left-panel {
-    float: left;
-    text-align: left;
-}
-.right-panel {
-    float: right;
-    text-align: right;
+    width: 80%;
+    padding: 1em;
 }
 
 .footer {
-    width: 100%;
     text-align: center;
-    font-size: 12px;
+    font-size: 0.8em;
 }

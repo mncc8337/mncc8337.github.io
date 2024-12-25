@@ -3,24 +3,25 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #3c3836;
-}
-
-.nav-entry-left {
-    float: left;
-}
-.nav-entry-right {
-    float: right;
+    background-color: #a180ff;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .nav-entry a {
     display: block;
-    color: #ebdbb2;
     text-align: center;
     padding: 5px 5px;
     text-decoration: none;
 }
 
+.nav-entry.left {
+    float: left;
+}
+.nav-entry.right {
+    float: right;
+}
+
 .nav-entry a:hover {
-    color: #fe8019;
+    color: #e6deff;
 }
