@@ -3,16 +3,25 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #a180ff;
+    /*background-color: #a180ff;*/
     margin-top: auto;
     margin-bottom: auto;
 }
 
 .nav-entry a {
     display: block;
-    text-align: center;
-    padding: 5px 5px;
+    color: #7c4ecc;
     text-decoration: none;
+    padding: 5px 5px;
+}
+
+.nav-entry a:link {
+    color: #7c4ecc;
+}
+
+.nav-entry a:hover {
+    color: #e6deff;
+    text-decoration: underline;
 }
 
 .nav-entry.left {
@@ -20,8 +29,4 @@
 }
 .nav-entry.right {
     float: right;
-}
-
-.nav-entry a:hover {
-    color: #e6deff;
 }
