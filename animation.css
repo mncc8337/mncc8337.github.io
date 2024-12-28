@@ -1,4 +1,4 @@
-@keyframes gay-fg-anim {
+@keyframes rainbow-fg-anim {
     13%  { color: #eb4034 }
     25%  { color: #eb9334 }
     38%  { color: #ebe834 }
@@ -23,8 +23,8 @@
     100% { transform: translate( 1px, -2px) rotate(-1deg); }
 }
 
-.gay-fg {
-    animation: gay-fg-anim 5s;
+.rainbow-fg {
+    animation: rainbow-fg-anim 5s;
     animation-iteration-count: infinite;
 }
 
