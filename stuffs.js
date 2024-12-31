@@ -42,6 +42,9 @@ function toggleColorscheme() {
     setColorscheme(colorscheme);
 }
 
+// make functions accessible to html
+window.toggleColorscheme = toggleColorscheme
+
 window.onload = function() {
     // update footer year
     updateYear();
