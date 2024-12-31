@@ -13,22 +13,36 @@
 }
 
 .nav-entry span {
-    color: var(--bg0);
+    color: var(--navbar-select);
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
 
 .nav-entry a {
-    color: var(--accent2);
+    color: var(--navbar-normal);
     text-decoration: none;
 }
 
 .nav-entry a:link {
-    color: var(--accent2);
+    color: var(--navbar-normal);
 }
 
 .nav-entry a:hover {
-    color: var(--bg4);
+    color: var(--navbar-select);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.nav-entry button {
+    color: var(--navbar-normal);
+    background: var(--background);
+    border: none;
+    font-size: 1em;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.nav-entry button:hover {
+    color: var(--navbar-select);
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }

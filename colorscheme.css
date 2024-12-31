@@ -1,12 +1,37 @@
 :root {
-    --accent0: #b69cff;
-    --accent1: #632df7;
-    --accent2: #402885;
+    color-scheme: light dark;
 
-    --bg0: #2f2d36;
-    --bg1: #413e4a;
-    --bg2: #7d778f;
-    --bg3: #d1cce0;
-    --bg4: #eae0ff;
+    --background-light: #c5b5e6;
+    --hightlight-light: #6032e6;
+    --navbar-normal-light: #2f2d36;
+    --navbar-select-light: #7445ff;
+
+    --background-dark: #2f2d36;
+    --hightlight-dark: #9a82e0;
+    --navbar-normal-dark: #eae0ff;
+    --navbar-select-dark: #b69cff;
+
+    --color0-light: #2f2d36;
+    --color1-light: #413e4a;
+    --color2-light: #7d778f;
+    --color3-light: #d1cce0;
+    --color4-light: #eae0ff;
+
+    --color0-dark: #eae0ff;
+    --color1-dark: #d1cce0;
+    --color2-dark: #7d778f;
+    --color3-dark: #413e4a;
+    --color4-dark: #2f2d36;
+
+    --background: light-dark(var(--background-light), var(--background-dark));
+    --hightlight: light-dark(var(--hightlight-light), var(--hightlight-dark));
+    --navbar-normal: light-dark(var(--navbar-normal-light), var(--navbar-normal-dark));
+    --navbar-select: light-dark(var(--navbar-select-light), var(--navbar-select-dark));
+
+    --color0: light-dark(var(--color0-light), var(--color0-dark));
+    --color1: light-dark(var(--color1-light), var(--color1-dark));
+    --color2: light-dark(var(--color2-light), var(--color2-dark));
+    --color3: light-dark(var(--color3-light), var(--color3-dark));
+    --color4: light-dark(var(--color4-light), var(--color4-dark));
 }
 

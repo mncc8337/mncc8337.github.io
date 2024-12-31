@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap');
 
 ::selection {
-    color: var(--bg4);
-    background: var(--accent1);
+    color: var(--color4);
+    background: var(--hightlight);
 }
 
 * {
@@ -12,8 +12,8 @@
 }
 
 body {
-    background: var(--accent0);
-    color: var(--bg0);
+    background: var(--background);
+    color: var(--color0);
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
@@ -25,37 +25,26 @@ body {
 }
 
 hr {
-    border-color: var(--bg2);
+    border-color: var(--color2);
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
 }
 
-button {
-    border-radius: 2px;
-    border-style: solid;
-    border-width: 2px;
-}
-
 a {
-    color: var(--accent1);
+    color: var(--hightlight);
     text-decoration: none;
 }
 
 a:hover {
-    color: var(--bg1);
+    color: var(--color0);
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
 
-a:visited {
-    color: var(--accent2);
-    text-decoration: none;
-}
-
 .body {
-    background: var(--bg3);
+    background: var(--color3);
     padding: 1em;
 }
 
@@ -70,6 +59,6 @@ a:visited {
 .datetime {
     font-size: 0.7em;
     font-style: italic;
-    color: var(--bg1);
+    color: var(--color1);
     margin-left: 1em;
 }
