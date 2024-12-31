@@ -1,26 +1,35 @@
+@import "colorscheme.css";
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap');
+
 ::selection {
-    color: #efebff;
-    background: #9975ff;
+    color: var(--bg4);
+    background: var(--accent1);
+}
+
+* {
+    text-underline-offset: 5px;
+    line-height: 1.5em;
 }
 
 body {
-    background: #b69cff;
-    color: #2f2d36;
+    background: var(--accent0);
+    color: var(--bg0);
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
     max-width: 800px;
+
+    font-family: "Bricolage Grotesque", sans-serif;
     font-size: 18px;
 }
 
 hr {
-    border-color: #7d778f;
+    border-color: var(--bg2);
 }
 
-td {
-    padding-left: 10px;
-    padding-right: 10px;
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
 }
 
 button {
@@ -30,26 +39,28 @@ button {
 }
 
 a {
-    color: #9975ff;
+    color: var(--accent1);
     text-decoration: none;
 }
 
 a:hover {
-    color: #333333;
+    color: var(--bg1);
     text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 a:visited {
-    color: #412299;
+    color: var(--accent2);
     text-decoration: none;
 }
 
-/*.header {*/
-/*}*/
-
 .body {
-    background: #efebff;
+    background: var(--bg3);
     padding: 1em;
+}
+
+.below-header {
+    margin-top: 0;
 }
 
 .footer {
@@ -58,6 +69,7 @@ a:visited {
 
 .datetime {
     font-size: 0.7em;
-    color: #4b4854;
+    font-style: italic;
+    color: var(--bg1);
     margin-left: 1em;
 }

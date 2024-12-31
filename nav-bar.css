@@ -1,33 +1,36 @@
+@import "colorscheme.css";
+
 .nav-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    /*background: #a180ff;*/
-    margin-top: auto;
-    margin-bottom: auto;
+}
+
+.nav-entry * {
+    padding: 5px 5px;
+    display: block;
 }
 
 .nav-entry span {
-    display: block;
-    color: #e6deff;
-    padding: 5px 5px;
+    color: var(--bg0);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 .nav-entry a {
-    display: block;
-    color: #7c4ecc;
+    color: var(--accent2);
     text-decoration: none;
-    padding: 5px 5px;
 }
 
 .nav-entry a:link {
-    color: #7c4ecc;
+    color: var(--accent2);
 }
 
 .nav-entry a:hover {
-    color: #e6deff;
+    color: var(--bg4);
     text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 .nav-entry.left {
