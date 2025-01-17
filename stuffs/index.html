@@ -13,26 +13,26 @@
 
         <title>stoopid site</title>
         <link rel="icon" type="image/x-icon" href="../avt.png">
+
+        <script src="./canvas.js"></script>
     </head>
 
     <body>
         <ul class="nav-list">
             <li class="nav-entry left"><a href="../index.html">main</a></li>
-            <li class="nav-entry left"><span>posts</span></li>
-            <li class="nav-entry left"><a href="../stuffs/index.html">stuffs</a></li>
+            <li class="nav-entry left"><a href="../posts/index.html">posts</a></li>
+            <li class="nav-entry left"><span>stuffs</span></li>
 
             <li class="nav-entry right"><button id="colorscheme-button" onclick="toggleColorscheme()">colorscheme</button></li>
         </ul>
 
         <div class="body">
-            <h1>Posts</h1>
-            <p class="below-header">List of all posted posts</p>
+            <h1>Stuffs</h1>
+            <p class="below-header">Canvas test</p>
 
             <hr>
 
-            <ul>
-                <li><a href="./new-game-project.html">New game project</a><span class="datetime">15/12/2024</span></li>
-            </ul>
+            <canvas id="canvas" width="100" height ="100"></canvas>
 
             <hr>
 
