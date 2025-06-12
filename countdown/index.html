@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="mncc8337">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/animation.css">
+        <link rel="stylesheet" href="/nav-bar.css">
+
+        <title>stoopid site</title>
+        <link rel="icon" type="image/x-icon" href="/avt.png">
+    </head>
+
+    <body>
+        <ul class="nav-list">
+            <li class="nav-entry left"><a href="/index.html">main</a></li>
+            <li class="nav-entry left"><a href="/posts/index.html">posts</a></li>
+            <li class="nav-entry left"><a href="/stuffs/index.html">stuffs</a></li>
+            <li class="nav-entry left"><span>???</span></li>
+
+            <li class="nav-entry right"><button id="colorscheme-button" onclick="toggleColorscheme()">colorscheme</button></li>
+        </ul>
+
+        <div class="body">
+            <h1>lo hoc bai di?</h1>
+            <p class="below-header">?????</p>
+
+            <hr>
+
+            <p id="txt">tu tu</p>
+            <p id="rand"></p>
+
+            <script>
+            var target_date = new Date("June 26, 2025 07:00:00");
+
+            var para = document.getElementById("txt");
+            var rand_para = document.getElementById("rand");
+
+            const rand_phrase = [
+                "lo hocj ddi chowi bowif con cawcj af?",
+                "h m cos hojc k?",
+                "ddeos hocj thif ddi ngur",
+            ];
+            rand_para.innerHTML = rand_phrase[Math.floor(Math.random()*rand_phrase.length)];
+
+            var i = setInterval(function() {
+                update();
+            }, 1000)
+
+            function update() {
+                var now = new Date().getTime();
+                var dis = target_date - now;
+
+                var days = Math.floor(dis / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((dis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((dis % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((dis % (1000 * 60)) / 1000);
+
+                para.innerHTML = "con " + days + " ngayf " + hours + " giowf " + minutes + " phuts " + seconds + " giaay nx<br>laf thi mej rooir?";
+
+                if(dis < 0) {
+                    clearInterval(i);
+                    para.innerHTML = "thi mej rooif";
+                    rand_para.innerHTML = "";
+                }
+            }
+            update();
+
+            </script>
+
+            <hr>
+
+            <div class="footer">@mncc8337, 2024 - <span class="current-year"></span></div>
+        </div>
+
+        <script src="/stuffs.js" type="module"></script>
+    </body>
+</html>
