@@ -24,30 +24,54 @@
         </ul>
 
         <div class="body">
-            <h1>lo hoc bai di?</h1>
-            <p class="below-header">?????</p>
+            <h1 id="header">lo hoc bai di?</h1>
+            <p class="below-header">yeet</p>
 
             <hr>
 
-            <p id="txt">tu tu</p>
+            <p id="txt"></p>
             <p id="rand"></p>
 
             <script>
             var target_date = new Date("June 26, 2025 07:00:00");
 
-            var para = document.getElementById("txt");
+            var header = document.getElementById("header");
             var rand_para = document.getElementById("rand");
+            var para = document.getElementById("txt");
 
+            const rand_header = [
+                "lo hoc bai di?",
+                "nhinf gif",
+                "layj cuj",
+            ];
+            const late_rand_header = [
+                "ngur mej di?",
+                "h nayf r maf conf thuwcs",
+            ];
             const rand_phrase = [
                 "lo hocj ddi chowi bowif con cawcj af?",
                 "h m cos hojc k?",
                 "ddeos hocj thif ddi ngur",
             ];
-            rand_para.innerHTML = rand_phrase[Math.floor(Math.random()*rand_phrase.length)];
+            const late_rand_phrase = [
+                "thuwcs cais ddeos gif",
+                "ddeos hocj thif ddi ngur",
+                "thichs ddootj quyj k?",
+            ];
+
+            var ops_phrase = rand_phrase;
+            var ops_header = rand_header;
+            let curr_hour = new Date().getHours();
+            if(curr_hour >= 0 && curr_hour <= 4) {
+                ops_phrase = late_rand_phrase;
+                ops_header = late_rand_header;
+            }
+            rand_para.innerHTML = ops_phrase[Math.floor(Math.random() * ops_phrase.length)];
+            header.innerHTML = ops_header[Math.floor(Math.random() * ops_header.length)];
 
             var i = setInterval(function() {
                 update();
-            }, 1000)
+            }, 1000),
 
             function update() {
                 var now = new Date().getTime();
@@ -58,11 +82,12 @@
                 var minutes = Math.floor((dis % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((dis % (1000 * 60)) / 1000);
 
-                para.innerHTML = "con " + days + " ngayf " + hours + " giowf " + minutes + " phuts " + seconds + " giaay nx<br>laf thi mej rooir?";
+                para.innerHTML = "con " + days + " ngayf " + hours + " giowf " + minutes + " phuts " + seconds + " giaay nx<br>laf thi THPT quoocs gia mej rooir?";
 
                 if(dis < 0) {
                     clearInterval(i);
-                    para.innerHTML = "thi mej rooif";
+                    header.innerHTML = "thi mej rooif";
+                    para.innerHTML = "gl";
                     rand_para.innerHTML = "";
                 }
             }
