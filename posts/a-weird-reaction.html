@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="mncc8337">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/animation.css">
+        <link rel="stylesheet" href="/nav-bar.css">
+
+        <title>stoopid site</title>
+        <link rel="icon" type="image/x-icon" href="/avt.png">
+    </head>
+
+    <body>
+        <ul class="nav-list">
+            <li class="nav-entry left"><a href="/index.html">main</a></li>
+            <li class="nav-entry left"><a href="/posts/index.html">posts</a></li>
+            <li class="nav-entry left"><a href="/stuffs/index.html">stuffs</a></li>
+
+            <li class="nav-entry right"><button id="colorscheme-button" onclick="toggleColorscheme()">colorscheme</button></li>
+        </ul>
+
+        <div class="body">
+            <h1>A weird reaction</h1>
+            <p class="below-header">03 Jul 2025, 17:39</p>
+
+            <hr>
+
+            <h2>The discovery</h2>
+            <p class="below-header">After learning about the reaction between Cu<sup>2+</sup> and I<sup>-</sup> to form a CuI precipitate, I decided to try it myself.</p>
+            <p>Normally, I<sup>-</sup> reduces Cu<sup>2+</sup> to Cu<sup>+</sup>, forming I<sub>2</sub>. Cu<sup>+</sup> then reacts with excess I<sup>-</sup> to form solid CuI, hence the equation:</p>
+            <center class="equation">2Cu<sup>2+</sup> + 4I<sup>-</sup> → 2CuI + I<sub>2</sub></center>
+            <p>This reaction is used to titrate Cu<sup>2+</sup>, since the product I<sub>2</sub> quickly forms a distinctive blue/purple complex with starch.</p>
+
+            <p>When I attempted the reaction with cupric acetate and 3% povidone iodine (I<sub>3</sub><sup>-</sup>), the result was different. In water, I<sub>3</sub><sup>-</sup> forms an equilibrium </p>
+            <center class="equation">I<sub>3</sub><sup>-</sup> ⇌ I<sub>2</sub> + I<sup>-</sup></center>
+            <p>then I<sup>-</sup> should react with Cu<sup>2+</sup> to form CuI precipitation. However, there was no precipitation, only the change in color from blue to green and then yellow. If I left it in open air for a while, the color would slowly change from yellow to green and finally to the original blue. After that, if I added 3% hydrogen peroxide, the yellow color slowly returned and then faded to blue. After that, adding hydrogen peroxide would not make the yellow color return.</p>
+
+            <p>I was confused, thinking that the acetate ion might cause some weird reaction, so I switched to cupric sulfate and did the same procedure as before. The result was still the same. However, this time I found that if I let the solution sit for 1 or 2 days, there was some white precipitation at the bottom. I was able to confirm that the precipitate was indeed CuI, since adding more povidone iodine made it dissolve. CuI can dissolve in excess I<sup>-</sup> because it forms a [CuI<sub>2</sub>]<sup>-</sup> complex (slightly yellow or colorless). I also found that the color change from yellow to blue was due to the reaction of the solution with some gas in the air, since either swirling or bubbling the solution helps make the color change happen faster.</p>
+
+            <h2>Hypothesis</h2>
+            <p class="below-header">My guess is that CuI is still formed, but it  redissolves to form the [CuI<sub>2</sub>]<sup>-</sup> complex, causing the color change from blue to yellow. That complex then slowly decomposes and releases Cu<sup>2+</sup> and I<sup>-</sup> in the presence of O<sub>2</sub> (causing the color to shift back from yellow to blue), somehow no CuI formed (<i>blackmagic</i> bruh). Adding hydrogen peroxide oxidizes I<sup>-</sup> to I<sub>2</sub>, which then reacts with excess I<sup>-</sup> to form yellow I<sub>3</sub><sup>-</sup>. Some I<sup>-</sup> forms CuI with Cu<sup>2+</sup> and then redissolve, causing the blue color to fade. The solution changes color from yellow to blue if O<sub>2</sub> is introduced by either swirling, bubbling, or the slow diffusion of O<sub>2</sub>.</p>
+            <p>The reason why re-adding of hydrogen peroxide no longer causes a color change, even though it did the first time is that in the initial addition, oxidizing I<sup>-</sup> consumes most of the available H<sup>+</sup> from povidone iodine solution, so the next time it is added, little to no reaction occurs since there is insufficient H<sup>+</sup>. Adding acid restores the yellow color like the first time adding hydrogen peroxide.</p>
+            <p>I do think that the <i>blackmagic</i> I mentioned is the povidone polymer (polyvinylpyrrolidone) in the iodine source I used. I always see people doing this experiment successfully using tincture of iodine, not povidone iodine, so it may play a key role in the behavior of this reaction. The polymer may act as some sort of inhibitor of the precipitation reaction. Over time, the polymer could decompose, allowing CuI to form.</p>
+
+            <h2>Epilogue</h2>
+            <p class="below-header">In the end, I cannot prove any part of my hypothesis since I lack the necessary equipment to do so. Maybe in the future someone will do it for me and provide a reasonable explanation so I will not die of curiosity.</p>
+
+            <hr>
+
+            <div class="footer">@mncc8337, 2024 - <span class="current-year"></span></div>
+        </div>
+
+        <script src="/stuffs.js" type="module"></script>
+    </body>
+</html>
