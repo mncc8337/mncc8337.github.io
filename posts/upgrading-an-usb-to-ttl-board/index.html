@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="mncc8337">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/animation.css">
+        <link rel="stylesheet" href="/nav-bar.css">
+
+        <title>stoopid site</title>
+        <link rel="icon" type="image/x-icon" href="/avt.png">
+    </head>
+
+    <body>
+        <ul class="nav-list">
+            <li class="nav-entry left"><a href="/index.html">main</a></li>
+            <li class="nav-entry left"><a href="/posts/index.html">posts</a></li>
+            <li class="nav-entry left"><a href="/stuffs/index.html">stuffs</a></li>
+
+            <li class="nav-entry right"><button id="colorscheme-button" onclick="toggleColorscheme()">colorscheme</button></li>
+        </ul>
+
+        <div class="body">
+            <h1>Upgrading an USB to TTL board</h1>
+            <p class="below-header">16 Dec, 10:03</p>
+            <p>Images will be uploaded <i>later</i></p>
+
+            <hr>
+
+            <h2>BTE22-11 USB-TTL converter</h2>
+            <p class="below-header">I recently need an USB-serial board to talk to my custom ESP8266 dev board (it's just a ESP-12F stick to a perfboard with some resistors and 2 buttons for reset and boot). It needs to have the DTR pin so that I could upload code to the esp without holding the BOOT button before doing that (it's annoying). After some searchs, I found a retailer that sells a board called BTE22-11 that use CH340/CH9340 chip series as the converter. It fits all of my criteria: having the DTR pin, very small, and really cheap compared to other boards. It also comes with a 3v3 pin! So I ordered the one with the CH340C.</p>
+
+            <p>A few days later it came home. And at that exact moment I realised that it only support 5v logic. The ESP8266 only works with 3v3 logic. Silly me, the product images clearly shown that there is no voltage regulator on the board, meaning that the power source comes straight from the 5v USB port to the VCC pin. So where does the voltage of the 3v3 pin comes from? Well, it turns out that the CH340C has an internal LDO which converts input voltage to 3.3v, so that it could talk to the USB data line (which uses 3.3v logic). It is made as a chip leg to tell the chip whether to use 3v3 logic or 5v logic. The quirk is that its maximum current is very low since it is only used as a reference point. So I either add a LDO to the board, or just buy a new one. The first option seems interesting, and also money saving, so here we are at the operation room.</p>
+
+            <h2>The surgery</h2>
+            <p class="below-header">The LDO of my choice is the <a href="https://www.holtek.com/webapi/116711/HT78xxv151.pdf">HT7833</a> from Holtek. It has maximum 500mA current output, very low qRuiescent current 4μA, just 360mV drop out voltage and 500mV at max with input voltage in 3.0V to 5.0V range. Of course there are other options like AP2112 or the popular AMS1117, it just happen that I have a lot of these sitting around doing nothing.</p>
+
+            <p>The idea is simple: isolate the VCC pin of the CH340, connect the HT7833 then connect its Vout pin to CH340's VCC pin and done. But the execution is not that smooth. The CH340's VCC is too small and crowded, and I think my freaking huge induction soldering iron will not make it. So the first thing I do was breaking the solder pad of the VCC, then lift it up (also pray it for it not to break). It was very nasty (I literally scrape a hole underneath the pin), but now I can confidently work with it.</p>
+
+            <p>Now I need to connect the LDO to the board. My HT7833 is in SOT-89 packaging, I use a adapter board so that I can solder it easily (pardon my huge iron). Its pin out is very intuitive: GND, Vin, Vout, so I did the obvious thing: connect GND to the board's GND, connect Vin to board's 5V (mine has a polyfuse so I connect Vin after it), and finally connect Vout to CH340's VCC and the board's 3V. But hold on! After carefully reading the datasheet of the CH340, I realised that the CH340's 3V pin needed to connect to CH340's VCC when using 3.3v voltage, so I did exactly what it said</p>
+
+            <p>After checking everything for short circuit, I gained enough confident to plug it in to my laptop. Well, it did not show up when I run lsusb, at least my laptop still had a functional USB port. So I checked everything for short circuit. It was fine. I checked the output voltage of the board's pins. It was fine (what). At this point I thinked I might break the chip, so I disconnect everything, revert to its initial state and test again. At first I was freak out because it still did not show up in lsusb, because I forget to plug the USB A male head to the laptop lmao. After that it shown up, that was a big relief. So the problem was either the LDO, or my schematic was wrong. That seem like a very specific question so I decided to ask a LLM to find out what I was missing. The problem was a missing capacitor.</p>
+
+            <h2>Another use of capacitors</h2>
+            <p>Linear regulators like HT7833 use an opamp and a transistor to regulate its output: the higher the difference between output voltage compared to a reference point, the more current the transistor pass. The problem is that the opamp and the transistor does not react immediately, there is a delay. If the output voltage fluctuate at the same time the delay is happening, it will not be regulated. On the next phase, the opamp see a big fluctuation, drives the transistor to fully close/open, overshooting the target voltage, making the output voltage fluctuate again. That same senario happen in every delay, making the output oscillate wildy. The capacitor is there to slow down the rate of change of the output voltage and calm down the oscillation, ensure that the output voltage will always be regulated. A multimeter is too slow to catch the oscillation, so its reading is the average voltage it reads during an interval (this is also why multimeters cannot read accurate voltage from an PWM output and you would need a oscilloscope to read voltages that oscillate), and because the oscillation has very high frequency, the reading is very close to out target 3.3v. The CH340C is also very sensitive so it did not accept the oscillate voltage. I had seen the output decoupling capacitor in the example circuit of the HT7833, but I did not think that it would do anything beneficial (because I always see decoupling capacitors as noise filter) so that was entirely my fault.</p>
+
+            <p>That being said, I added a 10μF electrolytic capacitor to decouple the LDO's Vout, and the board now shown up on my laptop! Of course I can add a SPDT switch to select between 3v3-5v logic, but I dont have any of them, I also think that I will not works with 5v logic at near future, so that was it. It is also possible to add DIP switches to use all the feature of the CH340 (RS232, RS485), but that is not really simple, at that point you should find a board that support it all.</p>
+
+            <p>That was a really long yapping session. I hope that this project will provide you some valuable information to you. Also, remember to always use a decouple capacitor for your LDOs and opamps!</p>
+
+            <hr>
+
+            <div class="footer">@mncc8337, 2024 - <span class="current-year"></span></div>
+        </div>
+
+        <script src="/stuffs.js" type="module"></script>
+    </body>
+</html>
