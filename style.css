@@ -1,5 +1,5 @@
 @import "colorscheme.css";
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
 ::selection {
     color: var(--color4);
@@ -8,7 +8,7 @@
 
 * {
     text-underline-offset: 5px;
-    line-height: 1.5em;
+    line-height: 1.8em;
 }
 
 body {
@@ -20,8 +20,8 @@ body {
     margin-bottom: 0;
     max-width: 800px;
 
-    font-family: "Bricolage Grotesque", sans-serif;
-    font-size: 18px;
+    font-family: "Merriweather", serif;
+    font-size: 20px;
 }
 
 hr {
@@ -53,7 +53,6 @@ a:hover {
 }
 
 center.equation {
-    font-family: "Bricolage Grotesque", serif;
     font-size: 1.2em;
 }
 
@@ -62,8 +61,8 @@ center.equation {
 }
 
 .datetime {
-    font-size: 0.7em;
+    font-size: 0.9em;
     font-style: italic;
     color: var(--color1);
-    margin-left: 1em;
+    margin-right: 1em;
 }
