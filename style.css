@@ -1,5 +1,5 @@
 @import "colorscheme.css";
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 ::selection {
     color: var(--color4);
@@ -20,8 +20,9 @@ body {
     margin-bottom: 0;
     max-width: 800px;
 
-    font-family: "Merriweather", serif;
-    font-size: 20px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 hr {
