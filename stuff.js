@@ -42,8 +42,26 @@ function toggleColorscheme() {
     setColorscheme(colorscheme);
 }
 
+function backToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+}
+
 // make functions accessible to html
-window.toggleColorscheme = toggleColorscheme
+window.toggleColorscheme = toggleColorscheme;
+window.backToTop = backToTop;
+
+//initialise back-to-top button
+const bttButton = document.getElementById("back-to-top");
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 800) {
+        bttButton.classList.add("show");
+    } else {
+        bttButton.classList.remove("show");
+    }
+});
 
 // update footer year
 updateYear();
