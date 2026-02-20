@@ -1,5 +1,5 @@
 @import "colorscheme.css";
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
 ::selection {
     color: var(--color4);
@@ -31,6 +31,7 @@ hr {
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
+    font-weight: 600;
 }
 
 a {
@@ -40,6 +41,45 @@ a {
 
 a:hover {
     color: var(--color0);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav > * {
+    padding: 5px 5px;
+    display: block;
+}
+
+nav > *.left {
+    float: left;
+}
+
+nav > *.right {
+    float: right;
+}
+
+nav > a {
+    color: var(--navbar-normal);
+    text-decoration: none;
+}
+
+nav > button {
+    color: var(--navbar-normal);
+    background: var(--background);
+    border: none;
+    font-size: 1em;
+}
+
+nav > *:hover,
+nav > span {
+    color: var(--navbar-select);
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }

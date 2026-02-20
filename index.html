@@ -6,20 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="/animation.css">
-        <link rel="stylesheet" href="/nav-bar.css">
 
         <title>a stupid site</title>
         <link rel="icon" type="image/x-icon" href="/avt.png">
     </head>
 
     <body>
-        <ul class="nav-list">
-            <li class="nav-entry left"><span>main</span></li>
-            <li class="nav-entry left"><a href="/posts/index.html">posts</a></li>
+        <nav>
+            <span class="left">main</span>
+            <a class="left" href="/posts/index.html">posts</a>
 
-            <li class="nav-entry right"><button id="colorscheme-button" onclick="toggleColorscheme()">colorscheme</button></li>
-        </ul>
+            <button class="right" id="colorscheme-button">colorscheme</button>
+        </nav>
 
         <div class="body">
             <h1>A stupid site</h1>
@@ -29,36 +27,34 @@
 
             <h2>Hi!</h2>
             <p class="below-header">This is a personal website of mncc. I'm a self-taught programmer, love doing programming, messing with eletrical components and doing random chemistry stuff.</p>
-            <p>I have been doing programming since 2019-ish. Currently interested in making games using Godot and playing with MCUs. I have some experience with c, cpp, python, js and lua. Currently learning rust (🔥).</p>
-            <p>Sometimes I try to do some cool chemistry stuff at home, but due to lacks of important chemicals like (pls donate me some sulfuric acid), that stuff is often small scale or really boring. I love making things using electrolysis.</p>
+            <p>I have been doing programming since 2019-ish. Love making graphical thing like simulation and similars. Currently interested in making games using Godot and playing with MCUs.</p>
             <p>I use Arch btw.</p>
 
-            <h2>Projects</h2>
+            <h2>Notable projects</h2>
             <h3 class="below-header">Random programming stuff</h3>
             <ul class="below-header">
-                <li><a href="https://github.com/mncc8337/.dotfiles">.dotfiles</a>: just my .files</li>
-                <li><a href="https://github.com/mncc8337/kerosene">kerosene</a>: x86 monolithic operating system (c)</li>
-                <li><a href="https://github.com/mncc8337/rey-treycer">rey-treycer</a>: CPU ray tracer (cpp)</li>
-                <li><a href="https://github.com/mncc8337/shrimpy">shrimpy</a>: another ray tracer, but rust 🔥🔥🔥 and gpu 🔥🔥🔥 (rust 🚀🚀🚀)</li>
-                <li><a href="/grapping-hook/">grapping hook</a>: a platformer game about moving using a grapping hook (unity)</li>
-                <li><a href="/old/">old web</a>: old web i made when i was first know about html and stuff</li>
+                <li><a href="https://github.com/mncc8337/.dotfiles">.dotfiles</a> just my .files</li>
+                <li><a href="https://github.com/mncc8337/kerosene">kerosene</a> x86 monolithic operating system</li>
+                <li><a href="https://github.com/mncc8337/rey-treycer">rey-treycer</a> CPU ray tracer</li>
+                <li><a href="https://github.com/mncc8337/shrimpy">shrimpy</a> another ray tracer, but rust 🚀🚀🚀 and gpu 🔥🔥🔥</li>
+                <li><a href="/grapping-hook/">grapping hook</a> a platformer game about moving using a grapping hook</li>
             </ul>
 
             <h3>Questionable electronics</h3>
             <ul class="below-header">
-                <li><a href="/posts/upgrading-an-usb-to-ttl-board/">USB-TTL converter modding</a>: Just me dealing with my stupidity</li>
+                <li><a href="/posts/upgrading-an-usb-to-ttl-board/">USB-TTL converter modding</a> me dealing with my stupidity</li>
             </ul>
 
             <p>
                 Visitors count started from Nov 22 2024<br>
-                <img src="https://count.getloli.com/@mncc8337-web?name=mncc8337-web&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0"><br>
+                <img src="https://count.getloli.com/@mncc8337-web?name=mncc8337-web&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0">
             </p>
 
             <hr>
 
-            <button id="back-to-top" onclick="backToTop()">↑</button>
+            <button id="back-to-top">↑</button>
 
-            <div class="footer">@mncc8337, 2024 - <span class="current-year"></span></div>
+            <div class="footer">@mncc8337, since 2024, plus some wise words here</div>
         </div>
 
         <script src="/stuff.js" type="module"></script>

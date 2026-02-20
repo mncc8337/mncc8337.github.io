@@ -6,20 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="/animation.css">
-        <link rel="stylesheet" href="/nav-bar.css">
 
         <title>A weird reaction - a stupid site</title>
         <link rel="icon" type="image/x-icon" href="/avt.png">
     </head>
 
     <body>
-        <ul class="nav-list">
-            <li class="nav-entry left"><a href="/index.html">main</a></li>
-            <li class="nav-entry left"><a href="/posts/index.html">posts</a></li>
+        <nav>
+            <a class="left" href="/index.html">main</a>
+            <a class="left" href="/posts/index.html">posts</a>
 
-            <li class="nav-entry right"><button id="colorscheme-button" onclick="toggleColorscheme()">colorscheme</button></li>
-        </ul>
+            <button class="right" id="colorscheme-button">colorscheme</button>
+        </nav>
 
         <div class="body">
             <h1>A weird reaction</h1>
@@ -67,9 +65,9 @@
 
             <hr>
 
-            <button id="back-to-top" onclick="backToTop()">↑</button>
+            <button id="back-to-top">↑</button>
 
-            <div class="footer">@mncc8337, 2024 - <span class="current-year"></span></div>
+            <div class="footer">@mncc8337, since 2024, plus some wise words here</div>
         </div>
 
         <script src="/stuff.js" type="module"></script>

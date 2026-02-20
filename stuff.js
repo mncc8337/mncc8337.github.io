@@ -1,14 +1,5 @@
 import * as cookie from "./cookie.js";
 
-function updateYear() {
-    let elements = document.getElementsByClassName("current-year");
-
-    for(let i = 0; i < elements.length; i++) {
-        let element = elements[i];
-        element.innerHTML = new Date().getFullYear();
-    }
-}
-
 function getColorscheme() {
     let saved_colorscheme = cookie.getCookie("colorscheme");
     if(saved_colorscheme != "") {
@@ -30,6 +21,7 @@ function setColorscheme(colorscheme) {
     document.documentElement.style.setProperty("color-scheme", colorscheme);
 }
 
+
 function toggleColorscheme() {
     let colorscheme = getColorscheme();
 
@@ -42,16 +34,8 @@ function toggleColorscheme() {
     setColorscheme(colorscheme);
 }
 
-function backToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
-}
-
-// make functions accessible to html
-window.toggleColorscheme = toggleColorscheme;
-window.backToTop = backToTop;
+// load colorscheme on page load
+setColorscheme(getColorscheme());
 
 //initialise back-to-top button
 const bttButton = document.getElementById("back-to-top");
@@ -63,8 +47,11 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// update footer year
-updateYear();
-
-// load colorscheme
-setColorscheme(getColorscheme());
+// attach buttons' event
+document.getElementById("colorscheme-button").addEventListener("click", toggleColorscheme);
+bttButton.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+});
