@@ -12,11 +12,11 @@ I use Arch btw.
 
 ## Notable projects
 ### Random programming stuff
- - [.dotfiles](https://github.com/mncc8337/.dotfiles") just my .files
- - [kerosene](https://github.com/mncc8337/kerosene") x86 monolithic operating system
- - [rey-treycer](https://github.com/mncc8337/rey-treycer") CPU ray tracer
- - [shrimpy](https://github.com/mncc8337/shrimpy") another ray tracer, but rust 🚀🚀🚀 and gpu 🔥🔥🔥
- - [grapping](/grapping-hook/") hook a platformer game about moving using a grapping hook
+ - [.dotfiles](https://github.com/mncc8337/.dotfiles) just my .files
+ - [kerosene](https://github.com/mncc8337/kerosene) x86 monolithic operating system
+ - [rey-treycer](https://github.com/mncc8337/rey-treycer) CPU ray tracer
+ - [shrimpy](https://github.com/mncc8337/shrimpy) another ray tracer, but rust 🚀🚀🚀 and gpu 🔥🔥🔥
+ - [grapping](/grapping-hook/) hook a platformer game about moving using a grapping hook
 
 ### Questionable electronics
  - [USB-TTL converter modding](/posts/upgrading-an-usb-to-ttl-board/) me dealing with my stupidity
