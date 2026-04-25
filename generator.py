@@ -62,7 +62,8 @@ def parse_writeup(
     path: Path,
     content: str,
     metadata: dict,
-    site_map: list[dict[str, Any]]
+    site_map: list[dict[str, Any]],
+    hidden_nav: list[str]
 ) -> str:
     page_title: str = ""
     page_description: str = ""
@@ -73,10 +74,8 @@ def parse_writeup(
 
     is_directory_index: bool = metadata.get("is_directory_index", False)
     nav_items_copy: dict[str, bool] = nav_items.copy()
-    if category == "main" or is_directory_index:
+    if category == "main" or is_directory_index or category in nav_hidden_list:
         nav_items_copy[category] = True
-    else:
-        nav_items_copy[category] = False
 
     if metadata.get("skip_md", False):
         rendered_content = content
@@ -213,7 +212,8 @@ for item in pages_dir.rglob('*.md'):
         item,
         post.content,
         post.metadata,
-        site_map
+        site_map,
+        nav_hidden_list
     )
     generated: Path
     if item.name == "index.md":
