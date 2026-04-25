@@ -1,0 +1,79 @@
+---
+title: countdown
+creation_date: 13 Jun 2025 00:17
+skip_md: True
+skip_header: True
+---
+<h1 id="header">lo hoc bai di?</h1>
+
+<hr>
+
+<p id="txt"></p>
+<p id="rand"></p>
+
+<script>
+var target_date = new Date("June 26, 2025 07:00:00");
+
+var header = document.getElementById("header");
+var rand_para = document.getElementById("rand");
+var para = document.getElementById("txt");
+
+const rand_header = [
+    "nhinf gif",
+    "layj cuj",
+    "xoar ddee",
+];
+const late_rand_header = [
+    "ngur mej di?",
+    "h nayf r maf conf thuwcs",
+];
+const rand_phrase = [
+    "hocj hanhf chi h ni nx",
+    "hawjc cocj",
+    "hocj cais loonf",
+    "game 24/24",
+];
+const late_rand_phrase = [
+    "thuwcs cais ddeos gif",
+    "ddeos hocj thif ddi ngur",
+    "thichs ddootj quyj k?",
+    "ngir ddi, vaif buwax ddi thi daayj ddeos ddc thig awn loonf af",
+];
+
+var ops_phrase = rand_phrase;
+var ops_header = rand_header;
+let curr_hour = new Date().getHours();
+if(curr_hour >= 0 && curr_hour <= 4) {
+    ops_phrase = late_rand_phrase;
+    ops_header = late_rand_header;
+}
+rand_para.innerHTML = ops_phrase[Math.floor(Math.random() * ops_phrase.length)];
+header.innerHTML = ops_header[Math.floor(Math.random() * ops_header.length)];
+
+var i = setInterval(function() {
+    update();
+}, 1000);
+
+function update() {
+    var now = new Date().getTime();
+    var dis = target_date - now;
+
+    var days = Math.floor(dis / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((dis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((dis % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((dis % (1000 * 60)) / 1000);
+
+    para.innerHTML = "con " + days + " ngayf " + hours + " giowf " + minutes + " phuts " + seconds + " giaay nx<br>laf thi THPT quoocs gia mej rooir?";
+
+    if(dis < 0) {
+        clearInterval(i);
+        header.innerHTML = "thi mej rooif";
+        para.innerHTML = "gl";
+        rand_para.innerHTML = "";
+    }
+}
+update();
+
+</script>
+
+

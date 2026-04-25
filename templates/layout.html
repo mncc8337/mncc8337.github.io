@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="mncc8337">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/style.css">
+
+        <title>{{ title }}</title>
+        <link rel="icon" type="image/x-icon" href="/avt.png">
+    </head>
+
+    <body>
+        <nav>
+            {{ navbar | safe }}
+
+            <button class="right" id="colorscheme-button">colorscheme</button>
+        </nav>
+
+        <div class="body">
+            {% if not skip_header %}
+            <h1>{{ page_title }}</h1>
+
+            {% if page_description %}
+            <p class="below-header">{{ page_description }}</p>
+            {% endif %}
+
+            <hr>
+            {% endif %}
+
+            {{ content | safe }}
+
+            {% if is_directory_index %}
+            <ul>
+                {% for page in site_map %}
+                    {% if page.category == current_category and not page.is_index and not page.delisted %}
+                        <li>
+                            <span class="datetime">{{ page.creation_date }}</span>
+                            <a href="{{ page.url }}">{{ page.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <hr>
+
+            {% if comment_section %}
+            <script src="https://giscus.app/client.js"
+                    data-repo="mncc8337/mncc8337.github.io"
+                    data-repo-id="R_kgDOKrdJ5Q"
+                    data-category="Announcements"
+                    data-category-id="DIC_kwDOKrdJ5c4C1p8V"
+                    data-mapping="title"
+                    data-strict="1"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="preferred_color_scheme"
+                    data-lang="en"
+                    data-loading="lazy"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+            {% endif %}
+
+            <button id="back-to-top">↑</button>
+
+            <small>created on {{ creation_date }}, last updated on {{ modified_date }}</small>
+            <div class="footer">@mncc8337, since 2024, plus some wise words here</div>
+        </div>
+
+        <script src="/stuff.js" type="module"></script>
+    </body>
+</html>
