@@ -2,7 +2,7 @@
 title: Upgrading an USB to TTL board
 creation_date: 16 Dec 2025 10:03
 ---
-# Upgrading an USB to TTL board</h1>
+# Upgrading an USB to TTL board
 16 Dec 2025, 10:03  
 Images will be uploaded *later*
 

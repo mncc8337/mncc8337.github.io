@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 import frontmatter
+from markdown_it.presets import gfm_like
 from markdown_it import MarkdownIt
 from markdown_it.token import Token
 import jinja2
@@ -75,7 +76,7 @@ def parse_writeup(
     if category == "main" or is_directory_index:
         nav_items_copy[category] = True
     else:
-        nav_items_copy[category] = True
+        nav_items_copy[category] = False
 
     if metadata.get("skip_md", False):
         rendered_content = content
@@ -87,17 +88,21 @@ def parse_writeup(
         indices_to_drop: set[int] = set()
 
         # search and filter out page_title and page_description
+        h1_end: int = -1
+        h2_start: int = len(tokens)
         for i, token in enumerate(tokens):
             if token.type == "heading_open" and token.tag == "h1":
                 page_title = tokens[i+1].content
-
                 indices_to_drop.update([i, i+1, i+2])
-
-                if i+3 < len(tokens) and tokens[i+3].type == "paragraph_open":
-                    page_description = tokens[i+4].content
-                    indices_to_drop.update([i+3, i+4, i+5])
-
+                h1_end = i + 2
+            elif token.type == "heading_open" and token.tag == "h2" and h1_end != -1:
+                h2_start = i
                 break
+
+        if h1_end != -1:
+            desc_tokens = [t for t in tokens[h1_end+1: h2_start]]
+            page_description = md.renderer.render(desc_tokens, md.options, {})
+            indices_to_drop.update([i for i in range(h1_end - 2, h2_start)])
 
         filtered_tokens: list[Token] = [
             t for i, t in enumerate(tokens) if i not in indices_to_drop
@@ -130,7 +135,11 @@ def parse_writeup(
 
 
 md: MarkdownIt = MarkdownIt()
-env: jinja2.Environment = jinja2.Environment(loader=jinja2.FileSystemLoader("templates/"))
+gfm_like.make()
+
+env: jinja2.Environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader("templates/")
+)
 template: jinja2.Template = env.get_template("layout.html")
 
 output: Path = Path("out/")
