@@ -45,6 +45,26 @@ a:hover {
     text-decoration-thickness: 2px;
 }
 
+code {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--color4);
+    padding: 0.1em 0.3em;
+    font-size: 0.9em;
+}
+
+pre {
+    background: var(--color4);
+    padding: 1em;
+    overflow-x: auto;
+    line-height: 1.5em;
+}
+
+pre code {
+    background: transparent;
+    padding: 0;
+    font-size: 0.9em;
+}
+
 nav {
     list-style-type: none;
     margin: 0;
