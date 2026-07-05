@@ -14,7 +14,7 @@ This article will show you how to install ophub-armbian on a tx3-mini (or any su
 6. Now check if the FDT field on `uEnv.txt` and `extlinux/extlinux.conf` are both `/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb`, if it is good then the boot media is complete.
 >NOTE: If you don't want to deal with the hassle of making the front led interface works, edit `/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb` as stated on [#configuring the led driver] before installing.
 ## Booting
-1. Get the raw circuit out, locating a button on the board. many boards put this button on plain sights, but some put it behind the av jack, this is the boot mode button that let you select the boot mode, in this case it let you boot straight from the sd card instead of whatever builtin storage it has.
+1. Get the circuit board out, locating a button on the board. many boards put this button on plain sights, but some put it behind the av jack, this is the boot mode button that let you select the boot mode, in this case it let you boot straight from the sd card instead of whatever builtin storage it has.
 2. Connect the board to your router via the ethernet port.
 3. While holding the reset button, plugging in the power supply, continuing holding the button for 10 seconds and release.
 4. Wait for about 3-5 mins for it to completely boot (on the tx3-mini you can watch the light at the SPDIF port, when it is red then it is booting).
@@ -330,3 +330,10 @@ sudo rm -rf /usr/lib/firmware/{uwe5622,iwlwifi*,rtlwifi,rtl_bt,ap6*,ssv*}
 sudo rm -rf /usr/lib/firmware/{rt*,RTL*,mt*,fw_bcm*,clm_bcm*,ti-con*,intel,nvram_ap*,rockchip,imx,cypress,qca,uwe*,bt_*}
 ```
 The command above would give you about 700MiB of free space.
+### Reclaiming GPU reserved ram
+By default, linux will reserved 256MiB of ram for the mali GPU. If you connected a display to the box, that's fine. But if you don't, then it's a huge waste, when the system is already low on ram. Fortunately, reclaiming that 256MiB is easy. Todo that, open `/boot/uEnv.txt` and do the following:
+
+- Remove the `video=...` flag, this will disable video declaration.
+- Add this flag `cma=16M`, this will override the default kernel setting, forcing it to only reserve 16M for the GPU (we cannot set it to 0 because it will cause some problems for the kernel)
+- Be sure to not edit anything else, else you will brick the kernel and will have to boot to another boot medium to undo the changes.
+Now reboot and check `dmesg`, look for the line containing `cma`, tou should see that there are only 16M of ram reserved for GPU.
