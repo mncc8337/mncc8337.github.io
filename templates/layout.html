@@ -9,14 +9,19 @@
 
         <title>{{ title }}</title>
         <link rel="icon" type="image/x-icon" href="/avt.png">
+        <script src="/colorscheme-loader.js"></script>
     </head>
 
     <body>
-        <nav>
-            {{ navbar | safe }}
+        <header>
+            <nav>
+                {{ navbar | safe }}
+            </nav>
 
-            <button class="right" id="colorscheme-button">colorscheme</button>
-        </nav>
+            <div id="utilities">
+                <button id="colorscheme-button">colorscheme</button>
+            </div>
+        </header>
 
         <div class="body">
             {% if not skip_header %}
@@ -67,8 +72,10 @@
 
             <button id="back-to-top">↑</button>
 
-            <small>created on {{ creation_date }}, last updated on {{ modified_date }}</small>
-            <div class="footer">@mncc8337, since 2024, plus some wise words here</div>
+            <footer>
+                created on {{ creation_date }}, last updated on {{ modified_date }}<br>
+                @mncc8337, since 2024, plus some wise words here
+            </footer>
         </div>
 
         <script src="/stuff.js" type="module"></script>

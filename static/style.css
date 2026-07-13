@@ -14,6 +14,7 @@
 body {
     background: var(--background);
     color: var(--color0);
+
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
@@ -25,6 +26,19 @@ body {
     font-weight: 400;
 }
 
+@media (max-width: 600px) {
+    body {
+        font-size: 13px;
+    }
+}
+
+/* lmao */
+@media (max-width: 380px) {
+    body {
+        font-size: 7px;
+    }
+}
+
 hr {
     border-color: var(--color2);
 }
@@ -34,15 +48,40 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
+h1::after, h2::after, h3::after,
+h4::after, h5::after, h6::after {
+    padding-left: 8px;
+    
+    color: var(--color1);
+    font-weight: 400;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+h1:hover::after, h2:hover::after, h3:hover::after, 
+h4:hover::after, h5:hover::after, h6:hover::after {
+    opacity: 1;
+}
+
+h1::after { content: "#"; }
+h2::after { content: "##"; }
+h3::after { content: "###"; }
+h4::after { content: "####"; }
+h5::after { content: "#####"; }
+h6::after { content: "######"; }
+
 a {
     color: var(--hightlight);
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.3s ease, color 0.3s ease;
 }
 
 a:hover {
     color: var(--color0);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+    text-decoration-color: var(--color0);
 }
 
 code {
@@ -52,6 +91,10 @@ code {
     font-size: 0.9em;
 }
 
+p, li {
+    text-align: justify;
+}
+
 pre {
     background: var(--color4);
     padding: 1em;
@@ -59,49 +102,53 @@ pre {
     line-height: 1.5em;
 }
 
-pre code {
+pre > code {
     background: transparent;
     padding: 0;
     font-size: 0.9em;
 }
 
-nav {
-    list-style-type: none;
+header {
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-nav > * {
+header > * {
     padding: 5px 5px;
     display: block;
 }
 
-nav > *.left {
+header > nav {
     float: left;
+    list-style-type: none;
 }
 
-nav > *.right {
+header > #utilities {
     float: right;
 }
 
-nav > a {
+header > nav > a {
     color: var(--navbar-normal);
     text-decoration: none;
 }
 
-nav > button {
+header > #utilities > button {
     color: var(--navbar-normal);
     background: var(--background);
     border: none;
     font-size: 1em;
 }
 
-nav > *:hover,
-nav > span {
+header > nav > *:hover,
+header > nav > span {
     color: var(--navbar-select);
     text-decoration: underline;
     text-decoration-thickness: 2px;
+}
+
+footer, small {
+    font-size: 0.8em;
 }
 
 .body {
@@ -115,10 +162,6 @@ nav > span {
 
 center.equation {
     font-size: 1.2em;
-}
-
-.footer {
-    font-size: 0.8em;
 }
 
 .datetime {
