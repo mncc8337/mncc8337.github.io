@@ -15,27 +15,34 @@ body {
     background: var(--background);
     color: var(--color0);
 
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 800px 1fr;
+    margin: 0;
 
     font-family: "IBM Plex Mono", monospace;
     font-size: 18px;
     font-weight: 400;
 }
 
-@media (max-width: 600px) {
+/* turn off the 3 panel layout */
+@media (max-width: 800px) {
     body {
-        font-size: 13px;
+        display: block;
+    }
+
+    #left-window, 
+    #right-window {
+        display: none; 
+    }
+
+    #center-window {
+        width: 100%;
     }
 }
 
-/* lmao */
-@media (max-width: 380px) {
+@media (max-width: 680px) {
     body {
-        font-size: 7px;
+        font-size: 13px;
     }
 }
 
@@ -95,6 +102,10 @@ p, li {
     text-align: justify;
 }
 
+ul, ol {
+    padding-left: 2em;
+}
+
 pre {
     background: var(--color4);
     padding: 1em;
@@ -106,6 +117,11 @@ pre > code {
     background: transparent;
     padding: 0;
     font-size: 0.9em;
+}
+
+main {
+    background: var(--color3);
+    padding: 1em 1em 0.5em 1em;
 }
 
 header {
@@ -151,11 +167,6 @@ footer, small {
     font-size: 0.8em;
 }
 
-.body {
-    background: var(--color3);
-    padding: 1em;
-}
-
 .below-header {
     margin-top: 0;
 }
@@ -168,7 +179,7 @@ center.equation {
     font-size: 0.9em;
     font-style: italic;
     color: var(--color1);
-    margin-right: 1em;
+    padding-right: 0.5em;
 }
 
 #back-to-top {
