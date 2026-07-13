@@ -49,10 +49,10 @@ def navbar_generator(nav_items: dict[str, bool]) -> str:
 
     for nav in nav_items.keys():
         if nav_items[nav]:
-            out += f"<span class=\"left\">{nav}</span>\n"
+            out += f"<span>{nav}</span>\n"
         else:
             href: str = "/index.html" if nav == "main" else f"/{nav}/index.html"
-            out += f"<a class=\"left\" href=\"{href}\">{nav}</a>\n"
+            out += f"<a href=\"{href}\">{nav}</a>\n"
     return out
 
 

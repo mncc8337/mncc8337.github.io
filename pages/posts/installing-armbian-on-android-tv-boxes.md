@@ -32,7 +32,7 @@ After rebooting from `armbian-install`,  run `apt-update && apt upgrade` to upgr
 ### Update the timezone
 `timedatectl set-timezone <your timezone>`
 ### Set up the LED interface
-The front led display wont work out-of-the-box, you need to configure it. Run `armbian-openvfd` and choose the correct device name. if it if failed and looked this:
+The front led display wont work out-of-the-box, you need to configure it. Run `armbian-openvfd` and choose the correct device name. if it failed and looked this:
 ```
 [ OPTIONS ] Please Input ID: 18
 [ STEPS ] Enabling LED screen display...
