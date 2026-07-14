@@ -3,9 +3,6 @@ title: New game project
 creation_date: 15 Dec 2024 00:30
 delisted: True
 ---
-# New game project
-15 Dec 2024, 00:30
-
 ## What
 [We](https://github.com/0x5e8) decided to make a game about growing mold, called Mold Control (what a name).
 

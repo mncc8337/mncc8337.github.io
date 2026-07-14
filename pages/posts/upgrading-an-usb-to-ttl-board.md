@@ -1,11 +1,8 @@
 ---
 title: Upgrading an USB to TTL board
+description: Images will be uploaded *later*
 creation_date: 16 Dec 2025 10:03
 ---
-# Upgrading an USB to TTL board
-16 Dec 2025, 10:03  
-Images will be uploaded *later*
-
 ## BTE22-11 USB-TTL converter
 I recently need an USB-serial board to talk to my custom ESP8266 dev board (it's just a ESP-12F stick to a perfboard with some resistors and 2 buttons for reset and boot). It needs to have the DTR pin so that I could upload code to the esp without holding the BOOT button before doing that (it's annoying). After some searchs, I found a retailer that sells a board called BTE22-11 that use CH340/CH9340 chip series as the converter. It fits all of my criteria: having the DTR pin, very small, and really cheap compared to other boards. It also comes with a 3v3 pin! So I ordered the one with the CH340C.
 

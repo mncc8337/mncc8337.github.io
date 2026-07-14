@@ -1,10 +1,10 @@
 ---
-title: a stupid site
+title: A stupid site
+description: Made using cavemen tools.
 creation_date: 09 Nov 2023
+show_creation_date: False
+article: False
 ---
-# A stupid site
-Made using cavemen tools.
-
 ## Hi!
 This is a personal website of mncc. I'm a self-taught programmer, love doing programming, messing with eletrical components and doing random chemistry stuff.
 I have been doing programming since 2019-ish. Love making graphical thing like simulation and similars. Currently interested in making games using Godot and playing with MCUs.

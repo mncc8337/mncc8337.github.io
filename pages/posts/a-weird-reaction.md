@@ -2,18 +2,19 @@
 title: A weird reaction
 creation_date: 03 Jul 2025 17:39
 ---
-# A weird reaction
-03 Jul 2025, 17:39
-
 ## The discovery
 After learning about the reaction between Cu<sup>2+</sup> and I<sup>-</sup> to form a CuI precipitate, I decided to try it myself.
-Normally, I<sup>-</sup> reduces Cu<sup>2+</sup> to Cu<sup>+</sup>, forming I<sub>2</sub>. Cu<sup>+</sup> then reacts with excess I<sup>-</sup> to form solid CuI, hence the equation:</p>
+Normally, I<sup>-</sup> reduces Cu<sup>2+</sup> to Cu<sup>+</sup>, forming I<sub>2</sub>. Cu<sup>+</sup> then reacts with excess I<sup>-</sup> to form solid CuI, hence the equation:
+
 <center class="equation">2Cu<sup>2+</sup> + 4I<sup>-</sup> → 2CuI + I<sub>2</sub></center>
+
 This reaction is used to titrate Cu<sup>2+</sup>, since the product I<sub>2</sub> quickly forms a distinctive blue/purple complex with starch.
 
-When I attempted the reaction with cupric acetate and 3% povidone iodine (I<sub>3</sub><sup>-</sup>), the result was different. In water, I<sub>3</sub><sup>-</sup> forms an equilibrium  
+When I attempted the reaction with cupric acetate and 3% povidone iodine (I<sub>3</sub><sup>-</sup>), the result was different. In water, I<sub>3</sub><sup>-</sup> forms an equilibrium:
+
 <center class="equation">I<sub>3</sub><sup>-</sup> ⇌ I<sub>2</sub> + I<sup>-</sup></center>
-then I<sup>-</sup> should react with Cu<sup>2+</sup> to form CuI precipitation. However, there was no precipitation, only the change in color from blue to green and then yellow. If I left it in open air for a while, the color would slowly change from yellow to green and finally to the original blue. After that, if I added 3% hydrogen peroxide, the yellow color slowly returned and then faded to blue. After that, adding hydrogen peroxide would not make the yellow color return.
+
+Then I<sup>-</sup> should react with Cu<sup>2+</sup> to form CuI precipitation. However, there was no precipitation, only the change in color from blue to green and then yellow. If I left it in open air for a while, the color would slowly change from yellow to green and finally to the original blue. After that, if I added 3% hydrogen peroxide, the yellow color slowly returned and then faded to blue. After that, adding hydrogen peroxide would not make the yellow color return.
 
 I was confused, thinking that the acetate ion might cause some weird reaction, so I switched to cupric sulfate and did the same procedure as before. The result was still the same. However, this time I found that if I let the solution sit for 1 or 2 days, there was some white precipitation at the bottom. I was able to confirm that the precipitate was indeed CuI, since adding more povidone iodine made it dissolve. CuI can dissolve in excess I<sup>-</sup> because it forms a [CuI<sub>2</sub>]<sup>-</sup> complex (slightly yellow or colorless). I also found that the color change from yellow to blue was due to the reaction of the solution with some gas in the air, since either swirling or bubbling the solution helps make the color change happen faster.
 
