@@ -16,7 +16,7 @@ body {
     color: var(--color0);
 
     display: grid;
-    grid-template-columns: 1fr 800px 1fr;
+    grid-template-columns: 1fr 1000px 1fr;
     margin: 0;
 
     font-family: "IBM Plex Mono", monospace;
@@ -25,7 +25,7 @@ body {
 }
 
 /* turn off the 3 panel layout */
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     body {
         display: block;
     }
@@ -46,13 +46,65 @@ body {
     }
 }
 
+header {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header > * {
+    padding: 5px 5px;
+}
+
+header > nav {
+    float: left;
+    list-style-type: none;
+}
+
+header > #utilities {
+    float: right;
+}
+
+header > nav > a,
+header > nav > span {
+    display: inline-block;
+}
+
+header > nav > a {
+    color: var(--navbar-normal);
+    text-decoration: none;
+}
+
+header > #utilities > button {
+    color: var(--navbar-normal);
+    background: transparent;
+    border: none;
+    font-size: 1em;
+}
+
+header > nav > *:hover,
+header > nav > span {
+    color: var(--navbar-select);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
 hr {
     border-color: var(--color2);
+}
+
+main {
+    background: var(--color3);
+    padding: 1em 1em 0.5em 1em;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
     font-weight: 600;
+}
+
+h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
+    margin-top: 0;
 }
 
 h1::after, h2::after, h3::after,
@@ -119,56 +171,8 @@ pre > code {
     font-size: 0.9em;
 }
 
-main {
-    background: var(--color3);
-    padding: 1em 1em 0.5em 1em;
-}
-
-header {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-header > * {
-    padding: 5px 5px;
-    display: block;
-}
-
-header > nav {
-    float: left;
-    list-style-type: none;
-}
-
-header > #utilities {
-    float: right;
-}
-
-header > nav > a {
-    color: var(--navbar-normal);
-    text-decoration: none;
-}
-
-header > #utilities > button {
-    color: var(--navbar-normal);
-    background: var(--background);
-    border: none;
-    font-size: 1em;
-}
-
-header > nav > *:hover,
-header > nav > span {
-    color: var(--navbar-select);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-}
-
 footer, small {
     font-size: 0.8em;
-}
-
-.below-header {
-    margin-top: 0;
 }
 
 center.equation {
@@ -195,10 +199,7 @@ center.equation {
     width: 1.8em;
     height: 1.8em;
     font-size: 1.6em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
 
     opacity: 0;
     cursor: pointer;

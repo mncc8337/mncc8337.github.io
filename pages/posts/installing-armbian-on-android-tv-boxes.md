@@ -1,10 +1,8 @@
 ---
 title: Installing Armbian on android tv boxes
+description: This article will show you how to install ophub-armbian on a tx3-mini (or any supported device since the procedure is the same).
 creation_date: 07 Jun 2026 15:26
 ---
-# Installing Armbian on android tv boxes
-07 Jun 2026 15:26  
-This article will show you how to install ophub-armbian on a tx3-mini (or any supported device since the procedure is the same).
 ## Creating a boot device
 1. Get the newest image [here](https://github.com/ophub/amlogic-s9xxx-armbian/releases). you can choose any version you like (noble, resolute, trixie, bookworm) but make sure that the cpu name matches (for me it is s905w and I'm using armbian noble)
 2. Flash the file onto an sdcard (I'm using a 4GB one and it works great) using balena etcher.
@@ -12,7 +10,7 @@ This article will show you how to install ophub-armbian on a tx3-mini (or any su
 4. Copy `u-boot-s905x-s912.bin` and rename to `u-boot.ext`
 5. Copy `extlinux/extlinux.conf.bak` and rename it to `extlinux/extlinux.conf`
 6. Now check if the FDT field on `uEnv.txt` and `extlinux/extlinux.conf` are both `/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb`, if it is good then the boot media is complete.
->NOTE: If you don't want to deal with the hassle of making the front led interface works, edit `/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb` as stated on [#configuring the led driver] before installing.
+>NOTE: If you don't want to deal with the hassle of making the front led interface works, edit `/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb` as stated on [Setting up the LED interface](#setting-up-the-led-interface) before installing.
 ## Booting
 1. Get the circuit board out, locating a button on the board. many boards put this button on plain sights, but some put it behind the av jack, this is the boot mode button that let you select the boot mode, in this case it let you boot straight from the sd card instead of whatever builtin storage it has.
 2. Connect the board to your router via the ethernet port.
@@ -31,8 +29,8 @@ This article will show you how to install ophub-armbian on a tx3-mini (or any su
 After rebooting from `armbian-install`,  run `apt-update && apt upgrade` to upgrade all packages.
 ### Update the timezone
 `timedatectl set-timezone <your timezone>`
-### Set up the LED interface
-The front led display wont work out-of-the-box, you need to configure it. Run `armbian-openvfd` and choose the correct device name. if it failed and looked this:
+### Setting up the LED interface
+The front led display wont work out-of-the-box, you need to configure it. Run `armbian-openvfd` and choose the correct device name. If it failed and looked this:
 ```
 [ OPTIONS ] Please Input ID: 18
 [ STEPS ] Enabling LED screen display...
@@ -60,7 +58,7 @@ Then edit your dtb as follow:
 ....
 
 # then insert this
-# the syntax must be correct else the device will brick it self
+# the syntax must be exactly the same else the device will brick it self
 # and you will need to boot to the install media to fix
 1973         openvfd {
 1974                 compatible = "open,vfd";
@@ -74,7 +72,7 @@ Then edit your dtb as follow:
 ```
 4. Now load the new dtb and reboot: `dtc -I dts -O dtb $HOME/tx3-mini.dts -o /boot/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb && reboot`
 5. If it booted successfully then just run `armbian-openvfd` again, it should success now
-> NOTE: while `armbian-openvfd` is simple to use, it does not start any service, it instead daemonlize the service (use `cat /sbin/armbian-openvfd` to confirm), which is hard to moderate. To fix it, follow [#Turn `vfdservice` to a service]
+> NOTE: while `armbian-openvfd` is simple to use, it does not start any service, it instead daemonlize the service (use `cat /sbin/armbian-openvfd` to confirm), which is hard to moderate. To fix it, follow [Start on startup](#start-on-startup).
 #### Start on startup
 ```
 # execute the following command in the terminal to enable the openvfd service
@@ -290,19 +288,7 @@ sudo systemctl enable openvfd-function-led.service
 sudo systemctl start openvfd-function-led.service
 sudo systemctl status openvfd-function-led.service
 ```
->NOTE: The system has already start a daemon process named `vfdservice` that would update the clock on the LED interface and blinking the colon. To turn this process into a service, see [#Turn `vfdservice` into a service].
-### Configuring SSH
-#### Creating a SSH key
-On your pc:
-1. Generate a key: `ssh-keygen -t ed25519 -C "<device name>"`
-2. Push it to your device: `ssh-copy-id root@<device ip>`
-On your device:
-3. Disable logging in via password by `vim /etc/ssh/sshd_config` and changing these line to
-```
-PasswordAuthentication no
-PermitRootLogin prohibit-password
-PubkeyAuthentication yes
-```
+>NOTE: The system has already start a daemon process named `vfdservice` that would update the clock on the LED interface and blinking the colon. To turn this process into a service, see [Start on startup](#start-on-startup).
 ### Removing unnecessary drivers
 You won't need all of the drivers on `/usr/lib/firmware/`, so it is the best to remove most of the heavy and unnecessary one.
 First, blocks `armbian-firmware` from updating, which would reinstall all of the driver files:

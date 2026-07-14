@@ -1,8 +1,10 @@
 ---
 title: countdown
 creation_date: 13 Jun 2025 00:17
+show_creation_date: False
 skip_md: True
 skip_header: True
+article: False
 ---
 <h1 id="header">lo hoc bai di?</h1>
 

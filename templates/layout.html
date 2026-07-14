@@ -5,6 +5,18 @@
         <meta name="author" content="mncc8337">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <meta name="description" content="{{ raw_description }}">
+        <meta property="og:title" content="{{ title }}">
+        <meta property="og:description" content="{{ raw_description }}">
+        <meta property="og:url" content="{{ url }}">
+        <meta property="og:image" content="/avt.png">
+
+        {% if article %}
+        <meta property="og:type" content="article">
+        {% else %}
+        <meta property="og:type" content="website">
+        {% endif %}
+
         <link rel="stylesheet" href="/style.css">
 
         <title>{{ title }}</title>
@@ -28,10 +40,14 @@
 
             <main>
                 {% if not skip_header %}
-                <h1>{{ page_title }}</h1>
+                <h1>{{ title }}</h1>
 
-                {% if page_description %}
-                <p class="below-header">{{ page_description }}</p>
+                {% if show_creation_date %}
+                <p class="below-header">{{ creation_date }}</p>
+                {% endif %}
+
+                {% if description %}
+                <p class="below-header">{{ description }}</p>
                 {% endif %}
 
                 <hr>
@@ -40,8 +56,7 @@
                 {{ content | safe }}
 
                 {% if is_directory_index %}
-                <ul>
-                    <table>
+                <table>
                     {% for page in site_map %}
                         {% if page.category == current_category and not page.is_index and not page.delisted %}
                             <tr>
@@ -50,8 +65,7 @@
                             </tr>
                         {% endif %}
                     {% endfor %}
-                    </table>
-                </ul>
+                </table>
                 {% endif %}
 
                 <hr>
@@ -79,7 +93,7 @@
 
                 <footer>
                     created on {{ creation_date }}, last updated on {{ modified_date }}<br>
-                    @mncc8337, since 2024, plus some wise words here
+                    @mncc8337, since 2024
                 </footer>
             </main>
 
