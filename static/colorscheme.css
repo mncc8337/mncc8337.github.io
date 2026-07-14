@@ -2,12 +2,12 @@
     color-scheme: light dark;
 
     --background-light: #c5b5e6;
-    --hightlight-light: #6032e6;
+    --highlight-light: #6032e6;
     --navbar-normal-light: #2f2d36;
     --navbar-select-light: #7445ff;
 
     --background-dark: #2f2d36;
-    --hightlight-dark: #9a82e0;
+    --highlight-dark: #9a82e0;
     --navbar-normal-dark: #eae0ff;
     --navbar-select-dark: #b69cff;
 
@@ -24,7 +24,7 @@
     --color4-dark: #2f2d36;
 
     --background: light-dark(var(--background-light), var(--background-dark));
-    --hightlight: light-dark(var(--hightlight-light), var(--hightlight-dark));
+    --highlight: light-dark(var(--highlight-light), var(--highlight-dark));
     --navbar-normal: light-dark(var(--navbar-normal-light), var(--navbar-normal-dark));
     --navbar-select: light-dark(var(--navbar-select-light), var(--navbar-select-dark));
 
