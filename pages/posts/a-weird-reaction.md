@@ -1,5 +1,6 @@
 ---
 title: A weird reaction
+description: Please don't mix random chemicals together.
 creation_date: 03 Jul 2025 17:39
 ---
 ## The discovery
