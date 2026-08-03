@@ -1,6 +1,6 @@
 ---
 title: Upgrading an USB to TTL board
-description: Images will be uploaded *later*
+description: LDOs always comes with caps.
 creation_date: 16 Dec 2025 10:03
 ---
 ## BTE22-11 USB-TTL converter

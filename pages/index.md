@@ -22,5 +22,5 @@ I use Arch btw.
  - [USB-TTL converter modding](/posts/upgrading-an-usb-to-ttl-board/) me dealing with my stupidity
 
 Visitors count started from Nov 22 2024  
-![image](https://count.getloli.com/@mncc8337-web?name=mncc8337-web&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0)
+![](https://count.getloli.com/@mncc8337-web?name=mncc8337-web&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0)
 

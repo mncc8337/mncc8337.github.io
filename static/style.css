@@ -157,9 +157,9 @@ pre > code {
     padding: 0;
 }
 
-p, li {
-    text-align: justify;
-}
+/* p, li { */
+/*     text-align: justify; */
+/* } */
 
 ul, ol {
     padding-left: 2em;
@@ -167,6 +167,23 @@ ul, ol {
 
 footer, small {
     font-size: 0.8em;
+}
+
+kbd {
+    padding: 2px;
+    border: 1px solid var(--color0);
+}
+
+figure > video {
+    width: 100%;
+}
+
+figure > img {
+    width: 100%;
+}
+
+figure > figcaption, table > caption {
+    font-size: 0.9em;
 }
 
 center.equation {

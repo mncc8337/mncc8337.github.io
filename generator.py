@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 import frontmatter
+import html
 from markdown_it.presets import gfm_like
 from markdown_it import MarkdownIt
 from mdit_py_plugins.anchors import anchors_plugin
@@ -12,6 +13,54 @@ from mdit_py_plugins.tasklists import tasklists_plugin
 import jinja2
 
 TIME_FORMAT = "%d %b %Y %H:%M"
+
+
+def create_media_renderer(md_instance):
+    def media_renderer(tokens, idx, options, env):
+        token = tokens[idx]
+        src = token.attrGet("src") or ""
+        alt_raw = token.content or ""
+        title_raw = token.attrGet("title")
+
+        alt_escaped = html.escape(alt_raw)
+        title_attr = "" if not alt_raw else f' title="{alt_escaped}"'
+        caption_text = title_raw if title_raw else alt_raw
+
+        clean_src = src.split('?')[0].lower()
+        is_video = clean_src.endswith(('.mp4', '.webm', '.ogv', '.mov'))
+        is_audio = clean_src.endswith(('.mp3', '.wav', '.m4a', '.ogg', '.aac', '.flac'))
+
+        if is_video:
+            if not alt_raw.strip():
+                return f'<video controls src="{src}"></video>'
+            return (
+                f'<figure>\n'
+                f'  <video controls src="{src}">{alt_escaped}</video>\n'
+                f'  <figcaption>{md_instance.renderInline(caption_text)}</figcaption>\n'
+                f'</figure>'
+            )
+
+        if is_audio:
+            if not alt_raw.strip():
+                return f'<audio controls src="{src}"></audio>'
+            return (
+                f'<figure>\n'
+                f'  <audio controls src="{src}">{alt_escaped}</audio>\n'
+                f'  <figcaption>{md_instance.renderInline(caption_text)}</figcaption>\n'
+                f'</figure>'
+            )
+
+        # it's an image at this point
+        if not alt_raw.strip():
+            return f'<img src="{src}">\n'
+        return (
+            f'<figure>\n'
+            f'  <img src="{src}" alt="{alt_escaped}"{title_attr}>\n'
+            f'  <figcaption>{md_instance.renderInline(caption_text)}</figcaption>\n'
+            f'</figure>'
+        )
+
+    return media_renderer
 
 
 def get_time_now() -> str:
@@ -121,6 +170,7 @@ md: MarkdownIt = MarkdownIt()
 md.use(anchors_plugin, min_level=1, max_level=6)
 md.use(tasklists_plugin)
 gfm_like.make()
+md.renderer.rules["image"] = create_media_renderer(md)
 
 env: jinja2.Environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader("templates/")
