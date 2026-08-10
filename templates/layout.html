@@ -56,12 +56,12 @@
                 {{ content | safe }}
 
                 {% if is_directory_index %}
-                <table>
+                <table class="listing">
                     {% for page in site_map %}
                         {% if page.category == current_category and not page.is_index and not page.delisted %}
-                            <tr>
-                                <td class="datetime">{{ page.creation_date }}</td>
-                                <td><a href="{{ page.url }}">{{ page.title }}</a></td>
+                            <tr class="listing">
+                                <td class="listing datetime">{{ page.creation_date }}</td>
+                                <td class="listing"><a href="{{ page.url }}">{{ page.title }}</a></td>
                             </tr>
                         {% endif %}
                     {% endfor %}

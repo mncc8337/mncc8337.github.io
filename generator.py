@@ -167,6 +167,7 @@ def parse_writeup(
 
 
 md: MarkdownIt = MarkdownIt()
+md.enable("table")
 md.use(anchors_plugin, min_level=1, max_level=6)
 md.use(tasklists_plugin)
 gfm_like.make()

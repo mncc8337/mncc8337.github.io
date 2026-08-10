@@ -169,6 +169,28 @@ footer, small {
     font-size: 0.8em;
 }
 
+table:not(.listing) {
+    margin: auto;
+    border-collapse: collapse;
+    border-style: hidden;
+}
+
+th:not(.listing), td:not(.listing) {
+    padding: 0.2em;
+    border-color: var(--color0);
+    border-style: solid;
+}
+
+th:not(.listing) {
+    border-width: 0.2em 0.15em;
+    padding: 0.2em;
+}
+
+td:not(.listing) {
+    border-width: 0.08em 0.15em;
+    padding: 0.2em;
+}
+
 kbd {
     padding: 2px;
     border: 1px solid var(--color0);

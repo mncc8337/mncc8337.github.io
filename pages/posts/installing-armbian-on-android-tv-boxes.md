@@ -322,7 +322,7 @@ By default, linux will reserved 256MiB of ram for the mali GPU. If you connected
 - Remove the `video=...` flag, this will disable video declaration.
 - Add this flag `cma=16M`, this will override the default kernel setting, forcing it to only reserve 16M for the GPU (we cannot set it to 0 because it will cause some problems for the kernel)
 - Be sure to not edit anything else, else you will brick the kernel and will have to boot to another boot medium to undo the changes.
-Now reboot and check `dmesg`, look for the line containing `cma`, tou should see that there are only 16M of ram reserved for GPU.
+Now reboot and check `dmesg`, look for the line containing `cma`, you should see that there are only 16M of ram reserved for GPU.
 ### External SATA III HDD connected via USB not recognized after reboot
 If you can connect your HDD via USB when booted on linux, but not after restart, then the problem is at the u-boot initialization process. If you hook a UART adapter to the box and look at the boot log, you can see that at some lines before booting to linux:
 ```
