@@ -1,6 +1,6 @@
 ---
-title: Installing Armbian on android tv boxes
-description: A quick guide on how to install ophub-armbian on a tx3-mini.
+title: Installing Armbian on Tanix TX3-mini
+description: A quick guide on how to install ophub-armbian on a TX3-mini.
 creation_date: 07 Jun 2026 15:26
 ---
 ## Creating a boot device

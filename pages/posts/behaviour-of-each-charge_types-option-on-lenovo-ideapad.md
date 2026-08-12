@@ -24,7 +24,7 @@ On the Lenovo Vantage app on windows, there are 4 settings for Charging:
 So there are 3 binary parameters, thus 8 possible cases. Since this app loads saved settings on windows rather than reads the device state and I have no way to set options like rapid charge and overnight battery charging on linux, I need to boot to windows, set new settings, and then reboot to linux to see the effect.
 
 ## Test result
-My laptop model is IdeaPad Slim 3 15IRH10 `83K1000HVN`. Here is the test result
+My laptop model is IdeaPad Slim 3 15IRH10 `83K1`. Here is the test result
 
 |Conservation mode|Rapid charge|Overnight battery charging|`charge_types` value|
 |-----------------|------------|--------------------------|-------------------|
