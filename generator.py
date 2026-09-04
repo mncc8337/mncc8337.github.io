@@ -10,6 +10,7 @@ from markdown_it.presets import gfm_like
 from markdown_it import MarkdownIt
 from mdit_py_plugins.anchors import anchors_plugin
 from mdit_py_plugins.tasklists import tasklists_plugin
+from mdit_py_plugins.footnote import footnote_plugin
 import jinja2
 
 TIME_FORMAT = "%d %b %Y %H:%M"
@@ -170,6 +171,7 @@ md: MarkdownIt = MarkdownIt()
 md.enable("table")
 md.use(anchors_plugin, min_level=1, max_level=6)
 md.use(tasklists_plugin)
+md.use(footnote_plugin)
 gfm_like.make()
 md.renderer.rules["image"] = create_media_renderer(md)
 
