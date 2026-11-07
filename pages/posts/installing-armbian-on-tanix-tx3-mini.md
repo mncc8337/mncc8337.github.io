@@ -48,31 +48,37 @@ Open device failed.
 [ SUCCESS ] LED display enabled!
 ```
 Then edit your dtb as follow:
-1. Create a backup: `dtc -I dtb -O dts /boot/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb > $HOME/tx3-mini.dts.bck`
-2. Make a copy: `cp $HOME/tx3-mini.dts.bck $HOME/tx3-mini.dts && vim $HOME/tx3-mini.dts`
+1. Create the source from the original blob: `dtc -I dtb -O dts /boot/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb > $HOME/tx3-mini-openvfd.dts`
+2. Open and edit: `vim $HOME/tx3-mini-openvfd.dts`
 3. Add this `openvfd` section before the `__symbol__` section at the end of the file:
 ```
-# on vim, press Gkk[{ to go to there (it's on the end of the file)
-1973         __symbols__ {
-1974                 hwrom_reserved = "/reserved-memory/hwrom@0";
-....
+...
+     openvfd {
+         compatible = "open,vfd";
+         dev_name = "openvfd";
+         status = "okay";
+     };
 
-# then insert this
-# the syntax must be exactly the same else the device will brick it self
-# and you will need to boot to the install media to fix
-1973         openvfd {
-1974                 compatible = "open,vfd";
-1975                 dev_name = "openvfd";
-1976                 status = "okay";
-1977         };
-1978
-1979         __symbols__ {
-1980                 hwrom_reserved = "/reserved-memory/hwrom@0";
-....
+     __symbols__ {
+         hwrom_reserved = "/reserved-memory/hwrom@0";
+...
 ```
-4. Now load the new dtb and reboot: `dtc -I dts -O dtb $HOME/tx3-mini.dts -o /boot/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb && reboot`
-5. If it booted successfully then just run `armbian-openvfd` again, it should success now
-> NOTE: while `armbian-openvfd` is simple to use, it does not start any service, it instead daemonlize the service (use `cat /sbin/armbian-openvfd` to confirm), which is hard to moderate. To fix it, follow [Start on startup](#start-on-startup).
+5. On top of the newly added `openvfd` section, there is a `/spi` block. add `status = "disabled"` just after it:
+```
+    spi {
+        status = "disabled";
+        #address-cells = <0x01>;
+...
+    openvfd {
+...
+```
+> It is because that declaration would disable the spi unit. Because OpenVFD use software spi, it would failed to initialize because it cannot "acquire" GPIO 75 and 76 (which is MISO and CLK in that spi declaration). That spi unit is only used to declare the display (not working anyway) so it is safe to disable it.
+6. Now compile the new dtb: `dtc -I dts -O dtb $HOME/tx3-mini-openvfd.dts -o /boot/dtb/tx3-mini-openvfd.dtb`
+> This will generate a dtb in `/boot/dtb` and will not update automatically to the upstream changes. You an always repeat these steps when [it happends](https://github.com/ophub/amlogic-s9xxx-armbian/commits/main/build-armbian/armbian-files/platform-files/amlogic/bootfs/dtb/amlogic/meson-gxl-s905w-tx3-mini.dtb)
+7. Edit the `FDT` field in `uEnv.txt` to use the new dtb and reboot.
+7. If it booted successfully then just run `armbian-openvfd` again, it should success now
+> While `armbian-openvfd` is simple to use, it does not start any service, it instead daemonlize the service (use `cat /sbin/armbian-openvfd` to confirm), which is hard to moderate. To fix it, follow [Start on startup](#start-on-startup).
+> I tried using dtb overlay to automatically applying these edits when the upstream dtb changes, but the settings seem to embedded into the bootloader (chaning `boot.scr`, `boot.ini` and `emmc_autoscript` inside `/boot` seems to do nothing). So unless you have time to go into the bootloader and change the boot script (guarantee to work), then doing this manually is faster.
 #### Start on startup
 ```
 # execute the following command in the terminal to enable the openvfd service
@@ -124,6 +130,8 @@ modprobe openvfd vfd_gpio_clk=${vfd_gpio_clk} \
     vfd_display_type=${vfd_display_type}
 
 ${VFD_SERVICE}
+# if you have updated vfdservice:
+# ${VFD_SERVICE} --carousel
 ```
 Enable it
 ```
@@ -289,6 +297,24 @@ sudo systemctl start openvfd-function-led.service
 sudo systemctl status openvfd-function-led.service
 ```
 >NOTE: The system has already start a daemon process named `vfdservice` that would update the clock on the LED interface and blinking the colon. To turn this process into a service, see [Start on startup](#start-on-startup).
+#### Updating vfdservice
+The vfdservice embedded in ophub's armbian is v1.4.4, and the newest one is v1.4.7. It works perfectly fine, though missing some feature. If you really want to update, follow these steps:
+1. Get the same compiler that your kernel [are built with](https://gitlab.arm.com/tooling/gnu-toolchains-for-arm) and export the bin path to `$PATH`.
+2. Clone [linux_openvfd](https://github.com/arthur-liberman/linux_openvfd.git)
+3. Build the kernel module
+```sh
+cd linux_openvfd/driver
+# sudo make -C /lib/modules/$(uname -r)/build M=$(pwd) CC=aarch64-none-linux-gnu-gcc modules
+sudo make -C /lib/modules/$(uname -r)/build M=$(pwd) CC=aarch64-none-linux-gnu-gcc modules_install
+sudo depmod -a $(uname -r)
+```
+4. Build the service
+```sh
+cd ..
+make OpenVFDService
+sudo mv OpenVFDService /usr/share/openvfd/vfdservice
+```
+This new version supports displaying custom test, date and cpu temperature
 ### Removing unnecessary drivers
 You won't need all of the drivers on `/usr/lib/firmware/`, so it is the best to remove most of the heavy and unnecessary one.
 First, blocks `armbian-firmware` from updating, which would reinstall all of the driver files:
