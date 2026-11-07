@@ -63,7 +63,7 @@ Then edit your dtb as follow:
          hwrom_reserved = "/reserved-memory/hwrom@0";
 ...
 ```
-5. On top of the newly added `openvfd` section, there is a `/spi` block. add `status = "disabled"` just after it:
+5. On top of the newly added `openvfd` section, there is a `spi` block. add `status = "disabled"` just after it:
 ```
     spi {
         status = "disabled";
